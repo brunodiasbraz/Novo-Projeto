@@ -1,29 +1,44 @@
 <template>
-    <div class="container">
-      <Title :text="titlePage" />
-    </div>
-  </template>
+  <div class="container">
+    <NavBar />
+    <div>
+      <b-carousel
+      id="carousel-fade"
+      style="text-shadow: 0px 0px 2px #000"
+      fade
+      indicators
+      img-width="1024"
+      img-height="480"
+    >
+    <b-carousel-slide
+      caption="First Slide"
+      img-src="https://picsum.photos/1024/480/?image=10"
+    ></b-carousel-slide>
+    <b-carousel-slide
+      caption="Second Slide"
+      img-src="https://picsum.photos/1024/480/?image=12"
+    ></b-carousel-slide>
+    <b-carousel-slide
+      caption="Third Slide"
+      img-src="https://picsum.photos/1024/480/?image=22"
+    ></b-carousel-slide>
+  </b-carousel>
+</div>
+  </div>
+</template>
   
-  <script>
-  import Title from '../components/Title'
-  
-  export default {
-    name: 'HomePage',
-    components: {
-      Title
-    },
-    data() {
-      return {
-        titlePage: 'Tela de início'
-      }
+<script>
+import NavBar from '../components/NavBar'
+
+export default {
+  name: 'HomePage',
+  components: {
+    NavBar
+  },
+  data() {
+    return {
+      titlePage: 'Aqui um Slide'
     }
   }
-  </script>
-  
-  <style scoped>
-  .container {
-    width: 100%;
-    max-width: 790px;
-    margin: auto;
-  }
-  </style>
+}
+</script>
