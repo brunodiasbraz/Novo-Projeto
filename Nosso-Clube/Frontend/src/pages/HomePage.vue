@@ -1,6 +1,5 @@
 <template>
-  <div class="container">
-    <NavBar />
+  <div>
     <div>
       <b-carousel
       id="carousel-fade"
@@ -28,12 +27,12 @@
 </template>
   
 <script>
-import NavBar from '../components/NavBar'
+
 
 export default {
   name: 'HomePage',
   components: {
-    NavBar
+
   },
   data() {
     return {

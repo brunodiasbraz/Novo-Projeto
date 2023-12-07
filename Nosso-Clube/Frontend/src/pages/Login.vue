@@ -1,6 +1,5 @@
 <template>
   <div class="container">
-    <NavBar />
     <b-col md="6" offset-md="3" class="p-5">
     <b-form @submit="onSubmit" @reset="onReset" v-if="show">
       <b-form-group
@@ -49,8 +48,6 @@
 </template>
   
 <script>
-import NavBar from '../components/NavBar'
-
 export default {
     data() {
       return {
@@ -80,8 +77,5 @@ export default {
         })
       }
     },
-  components: {
-    NavBar
-  }
 }
 </script>
