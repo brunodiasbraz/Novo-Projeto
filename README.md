@@ -1,6 +1,4 @@
-# Nosso-Clube (gabusoftApp)
-
-This template should help get you started developing with Vue 3 in Vite.
+# Nosso-Clube (gabusoftApp) PT-Br
 
 ## Recommended IDE Setup
 
