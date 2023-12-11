@@ -1,42 +1,39 @@
 <template>
-    <div>
-      <nav class="navbar bg-light">
-        <div class="container-fluid ms-5 me-5">
-          <a class="navbar-brand">Nosso Clube</a>
-        <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
-    </div>
-  </nav>
-        <!-- <nav>
-        <b-navbar-brand tag="h1" class="ml-5 m-2">Nosso Clube</b-navbar-brand>
+  <div>
+    <nav class="navbar bg-transparent">
+      <div class="container-fluid ms-5 me-5">
+        <a class="navbar-brand">Nosso Clube</a>
+        <div>
+          <ul class="nav justify-content-end">
+            <li class="nav-item">
+              <a class="nav-link" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Planos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Parceiros</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Sobre nós</a>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <div class="dropdown-center">
+            <button class="btn btn-outline-success dropdown-toggle" type="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              Área do Cliente
+            </button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/login">Fideliza</a></li>
+              <li><a class="dropdown-item" href="/login">Clabão</a></li>
+            </ul>
+          </div>
+        </div>
 
-        <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
-
-        <b-collapse id="nav-collapse" is-nav>
-
-         
-          <b-navbar-nav class="ml-auto">
-            <b-navbar-nav>
-              <b-nav-item href="/" class="mr-2">Home</b-nav-item>
-              <b-nav-item href="#" class="mr-2">Planos</b-nav-item>
-              <b-nav-item href="#" class="mr-2">Parceiros</b-nav-item>
-              <b-nav-item href="#" class="mr-2">Sobre nós</b-nav-item>
-            </b-navbar-nav>
-            <b-button href="/login" class="mr-2" variant="outline-warning">Cadastre-se</b-button>
-            <b-nav-item-dropdown class="mr-5" right>
-             
-              <template #button-content>
-                <b class="mr-2">Área do Cliente</b>
-              </template>
-              <b-dropdown-item href="#">Fideliza</b-dropdown-item>
-              <b-dropdown-item href="#">Clubão</b-dropdown-item>
-            </b-nav-item-dropdown>
-          </b-navbar-nav>
-        </b-collapse>
-      </nav> -->
-
+      </div>
+    </nav>
   </div>
 </template>
 

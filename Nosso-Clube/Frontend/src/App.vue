@@ -12,8 +12,5 @@ import NavBar from './components/NavBar.vue'
       </nav>
     </div>
   </header>
-
-  <button class="btn btn-primary">Primary button</button>
-
   <RouterView />
 </template>
