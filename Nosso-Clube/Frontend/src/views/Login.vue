@@ -1,13 +1,22 @@
 <template>
   <div class="container-fluid">
+    <div class="container cont-login">
     <div class="row">
       <div class="col-sm bg-danger">
       Area para cadastrar
-    </div>
-    <div class="col-sm bg-warning">
-      <div class="container col-5">
+      </div>
+      <div class="col-sm bg-warning">
+      <div class="container ml-5 p-5 col-8">
         <form>
           <div class="mb-3">
+            <h1 class="text-center">Entrar</h1>
+
+            <div class="text-center p-4">
+              <span class="col-sm p-1 m-2 border border-dark rounded"><i class="col-sm m-1 fa-brands fa-google"></i></span>
+              <span class="col-sm p-2 m-2 border border-dark rounded"><i class="col-sm m-1 fa-brands fa-facebook-f"></i></span>
+              <span class="col-sm p-1 m-2 border border-dark rounded"><i class="col-sm m-1 fa-solid fa-phone"></i></span>
+            </div>
+
             <label for="exampleInputEmail1" class="form-label">Email address</label>
             <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
             <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
@@ -23,41 +32,18 @@
           <button type="submit" class="btn btn-primary">Submit</button>
         </form>
       </div>
+     </div>
     </div>
-
     </div>
   </div>
 </template>
   
 <script>
-export default {
-  data() {
-    return {
-      form: {
-        email: '',
-        name: '',
-        senha: '',
-      },
-      show: true,
-    }
-  },
-  methods: {
-    onSubmit(event) {
-      event.preventDefault()
-      alert(JSON.stringify(this.form))
-    },
-    onReset(event) {
-      event.preventDefault()
-      // Reset our form values
-      this.form.email = ''
-      this.form.name = ''
-      this.form.senha = ''
-      // Trick to reset/clear native browser form validation state
-      this.show = false
-      this.$nextTick(() => {
-        this.show = true
-      })
-    }
-  },
-}
+
 </script>
+
+<style scoped>
+.cont-login{
+  padding: 5%;
+}
+</style>
