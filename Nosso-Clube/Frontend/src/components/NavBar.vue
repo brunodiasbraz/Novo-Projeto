@@ -1,8 +1,8 @@
 <template>
   <div>
-    <nav class="navbar bg-transparent">
+    <nav class="navbar bg-transparent" style="box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.055);">
       <div class="container-fluid ms-5 me-5">
-        <a class="navbar-brand">Nosso Clube</a>
+        <a href="/" class="navbar-brand"><i class="fa-regular fa-id-card"></i> <strong>Nosso</strong>Clube</a>
         <div>
           <ul class="nav justify-content-end">
             <li class="nav-item">
@@ -21,17 +21,20 @@
         </div>
         <div>
           <div class="dropdown-center">
-            <button class="btn btn-outline-success dropdown-toggle" type="button" data-bs-toggle="dropdown"
-              aria-expanded="false">
+            <button
+              class="btn btn-outline-success dropdown-toggle"
+              type="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
               Área do Cliente
             </button>
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="/login">Fideliza</a></li>
-              <li><a class="dropdown-item" href="/login">Clabão</a></li>
+              <li><a class="dropdown-item" href="/teste">Clubão</a></li>
             </ul>
           </div>
         </div>
-
       </div>
     </nav>
   </div>
@@ -39,6 +42,12 @@
 
 <script>
 export default {
-  name: 'NavBar',
+  name: 'NavBar'
 }
 </script>
+
+<style scoped>
+
+
+
+</style>
