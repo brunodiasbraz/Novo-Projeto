@@ -31,7 +31,7 @@ import FormLogin from "../components/FormLogin.vue"
 .bg-roxo{
   display: flex ;
   align-items: center;
-  background: linear-gradient(180deg, #5B438B 0%, #472A81 100%);
+  background: linear-gradient(180deg, #f08000 0%, #e05a00 100%);
   border-radius: 15px 0px 0px 15px;
   width: 550px;
   height: auto;

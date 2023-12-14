@@ -1,6 +1,6 @@
 <template>
   <div>
-    <nav class="navbar bg-transparent" style="box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.055);">
+    <nav class="navbar bg-transparent navbar-color">
       <div class="container-fluid ms-5 me-5">
         <a href="/" class="navbar-brand"><i class="fa-regular fa-id-card"></i> <strong>Nosso</strong>Clube</a>
         <div>
@@ -22,7 +22,7 @@
         <div>
           <div class="dropdown-center">
             <button
-              class="btn btn-outline-success dropdown-toggle"
+              class="btn btn-outline-warning dropdown-toggle"
               type="button"
               data-bs-toggle="dropdown"
               aria-expanded="false"
@@ -31,7 +31,7 @@
             </button>
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="/login">Fideliza</a></li>
-              <li><a class="dropdown-item" href="/teste">Clubão</a></li>
+              <li><a class="dropdown-item" href="/loginclubao">Clubão</a></li>
             </ul>
           </div>
         </div>
@@ -48,6 +48,9 @@ export default {
 
 <style scoped>
 
+.navbar-color{
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.055);
+}
 
 
 </style>
