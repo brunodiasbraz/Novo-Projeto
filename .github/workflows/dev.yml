@@ -22,6 +22,12 @@ jobs:
             - name: Executar comando na pasta Frontend
               run: npm run dev
               working-directory: ./Frontend
-           
+            
+            - name: Login Docker Hub
+              run: docker login -u ${{secrets.DOCKER_USERNAME}} -p ${{secrets.DOCKER_PASSWORD}}
 
+            - name: Build Docker Image
+              run: docker build -t brunodbraz/nossoclube_fidelidade ./frontend
 
+            - name: Push image Docker
+              run: docker push brunodbraz/nossoclube_fidelidade
