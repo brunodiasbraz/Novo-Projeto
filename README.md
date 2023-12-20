@@ -1,4 +1,4 @@
-# Nosso-Clube ( GabusoftApp ) PT-Br
+# Nosso-Clube ( GabusoftApp ) PT-BR
 
 ## Recommended IDE Setup
 
