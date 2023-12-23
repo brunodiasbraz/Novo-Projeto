@@ -23,12 +23,12 @@ jobs:
             ##  run: npm run dev
             ##  working-directory: ./Frontend
             
-            - name: Login Docker Hub
-              run: docker login -u ${{secrets.DOCKER_USERNAME}} -p ${{secrets.DOCKER_PASSWORD}}
+            #- name: Login Docker Hub
+            #  run: docker login -u ${{secrets.DOCKER_USERNAME}} -p ${{secrets.DOCKER_PASSWORD}}
 
-            - name: Build Docker Image
-              run: docker build -t brunodbraz/nossoclube_frontend .
-              working-directory: ./Frontend
+            #- name: Build Docker Image
+            #  run: docker build -t brunodbraz/nossoclube_frontend .
+            #  working-directory: ./Frontend
 
-            - name: Push image Docker
-              run: docker push brunodbraz/nossoclube_frontend
+            #- name: Push image Docker
+            #  run: docker push brunodbraz/nossoclube_frontend

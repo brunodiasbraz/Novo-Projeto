@@ -6,7 +6,7 @@
         <h1 class="text-white" ><strong>Que bom ter você por aqui!</strong></h1>
         <span class="text-white">Faça seu cadastro (é super rápido) e gerencie seu programa de Fidelidade na palma da sua mão.</span>
       <div>
-        <button type="submit" class="col-6 btn btn-outline-warning">Cadastrar</button>
+        <button type="submit" class="btn btn-outline-warning px-5">Cadastrar</button>
       </div> 
       </div>
 
