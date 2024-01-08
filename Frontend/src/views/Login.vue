@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid d-flex bg-url p-5 justify-content-center">
+  <div class="container-fluid d-flex bg-bege p-5 justify-content-center">
     <div class="row container">
       <div class="col-lg-5 col-md-12 d-flex align-items-center bg-roxo">
         <div class="row g-4 text-center">
@@ -23,12 +23,13 @@ import FormLogin from "../components/FormLogin.vue"
 </script>
 
 <style scoped>
-.bg-roxo{
+.bg-roxo {
   background: linear-gradient(180deg, #644a99 0%, #3a226b 100%);
   padding: 10%;
   border-radius: 15px 0px 0px 15px;
 }
-.bg-url{
-  background: #FFFFFF url("../assets/fidelidade.png") no-repeat right top fixed;
+
+.bg-bege {
+  background: #FBF7EC;
 }
 </style>

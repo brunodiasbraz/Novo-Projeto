@@ -1,38 +1,28 @@
 <template>
-  <div>
-    <nav class="navbar bg-transparent navbar-color">
-      <div class="container-fluid ms-5 me-5">
-        <a href="/" class="navbar-brand"><i class="fa-regular fa-id-card"></i> <strong>Nosso</strong>Clube</a>
+  <div class="sticky-top">
+    <nav class="navbar bg-bege ">
+      <div class="container-fluid mx-5">
+        <a href="/" class="navbar-brand"><i class="fa-solid fa-circle" style="color: #5b438b;"></i><strong>
+            Nosso</strong>Clube</a>
         <div>
           <ul class="nav justify-content-end">
             <li class="nav-item">
-              <a class="nav-link" href="/">Home</a>
+              <a class="nav-link text-secondary" href="/">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Planos</a>
+              <a class="nav-link text-secondary" href="#">Planos</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Parceiros</a>
+              <a class="nav-link text-secondary" href="#">Parceiros</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Sobre nós</a>
+              <a class="nav-link text-secondary" href="#">Sobre nós</a>
             </li>
           </ul>
         </div>
         <div>
           <div class="dropdown-center">
-            <button
-              class="btn btn-outline-warning dropdown-toggle"
-              type="button"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
-              Área do Cliente
-            </button>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="/login">Fideliza</a></li>
-              <li><a class="dropdown-item" href="/loginclubao">Clubão</a></li>
-            </ul>
+            <a class="btn rounded-5 text-white bg-roxo px-4" role="button" href="/login">Área do cliente</a>
           </div>
         </div>
       </div>
@@ -47,10 +37,11 @@ export default {
 </script>
 
 <style scoped>
+.bg-bege {
+  background: #FBF7EC;
+}
 
-/*.navbar-color{
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.055);
-}*/
-
-
+.bg-roxo {
+  background-color: #5B438B;
+}
 </style>
