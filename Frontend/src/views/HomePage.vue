@@ -2,36 +2,27 @@
 <script setup>
 import Section1 from '@components/Section1.vue'
 import Section2 from '@components/Section2Cards.vue'
+import Section3 from '@components/Section3.vue'
+import Section4 from '@components/Section4.vue'
+import Section5 from '@components/Section5.vue'
+import Section6 from '@components/Section6.vue'
+import Section7 from '@components/Section7.vue'
+import Section8Footer from '@components/Section8Footer.vue'
 </script>
 <template>
-  <div>
-    <Section1 />
-  </div>
-  <div>
-    <Section2 />
-  </div>
-  <!---<div class="p-4">
-    <div class="container-fluid px-5 row align-items-center">
-      <div class="col">
-        <div class="col" style="padding-left: 15%">
-          <h1>A solução ideal para sua empresa</h1>
-          <p class="mt-4 mb-4 fs-5 col-9">
-            <strong>Simplifique</strong> a comunicação entre seus atendentes e clientes.
-          </p>
-          <a
-            class="btn btn-outline-primary btn-lg"
-            role="button"
-            href="#"
-            style="width: 180px; height: 50px"
-            >Saiba mais!</a
-          >
-        </div>
-      </div>
-      <div class="col">
-        <img class="img-fluid" src="../assets/Teste.png" alt="aqui uma imagem" />
-      </div>
-    </div>
-  </div>--->
+  <Section1 />
+
+
+  <Section2 />
+
+
+  <Section3 />
+
+  <Section4 />
+  <Section5 />
+  <Section6 />
+  <Section7 />
+  <Section8Footer />
 </template>
 
 <script>

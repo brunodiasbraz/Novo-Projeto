@@ -19,9 +19,9 @@ jobs:
               run: npm install
               working-directory: ./Frontend
           
-            ##- name: Executar comando na pasta Frontend
-            ##  run: npm run dev
-            ##  working-directory: ./Frontend
+            - name: Executar comando na pasta Frontend
+              run: npm run build
+              working-directory: ./Frontend
             
             #- name: Login Docker Hub
             #  run: docker login -u ${{secrets.DOCKER_USERNAME}} -p ${{secrets.DOCKER_PASSWORD}}
