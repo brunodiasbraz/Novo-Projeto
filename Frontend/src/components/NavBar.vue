@@ -10,7 +10,7 @@
           <i class="fa-solid fa-bars-staggered" style="color: #5b438b;"></i>
         </button>
 
-        <div class="collapse navbar-collapse" id="navbarNav">
+        <div class="collapse navbar-collapse text-end" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item">
               <a class="nav-link text-secondary" href="/">Home</a>
