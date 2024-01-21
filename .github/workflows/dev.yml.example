@@ -1,0 +1,34 @@
+name: Desenvolvimento Projeto NossoClube
+
+on:
+    push:
+        branches: [ development ]
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+
+        steps:
+            - uses: actions/checkout@v4
+            - name: Setup Node.js
+              uses: actions/setup-node@v4
+              with:
+                node-version: 20.10.0
+
+            - name: Instalar dependências
+              run: npm install
+              working-directory: ./Frontend
+          
+            #- name: Executar comando na pasta Frontend
+            #  run: npm run build
+            #  working-directory: ./Frontend
+            
+            #- name: Login Docker Hub
+            #  run: docker login -u ${{secrets.DOCKER_USERNAME}} -p ${{secrets.DOCKER_PASSWORD}}
+
+            #- name: Build Docker Image
+            #  run: docker build -t brunodbraz/nossoclube_frontend .
+            #  working-directory: ./Frontend
+
+            #- name: Push image Docker
+            #  run: docker push brunodbraz/nossoclube_frontend
