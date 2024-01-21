@@ -1,7 +1,7 @@
 <template>
   <div class="container cards">
     <div class="row d-flex card-deck g-4 m-3 text-center justify-content-center ">
-      <div class="col-sm-6 col-md-4 col-lg-3 mx-sm-4 pt-5 pb-4 card shadow-sm">
+      <div class="col-sm-6 col-md-4 col-lg-3 mx-sm-4 pt-5 pb-4 card shadow">
         <div>
           <img class="card-img-top" src="@assets/cart.svg" style="width: 25%;" alt="Imagem de capa do card">
         </div>
@@ -11,7 +11,7 @@
             loja parceira.</p>
         </div>
       </div>
-      <div class="col-sm-6 col-md-4 col-lg-3 mx-sm-4 pt-5 pb-4 bg-roxo text-white card shadow-sm">
+      <div class="col-sm-6 col-md-4 col-lg-3 mx-sm-4 pt-5 pb-4 bg-roxo text-white card shadow">
         <div>
           <img class="card-img-top" src="@assets/qrcode.svg" style="width: 25%;" alt="Imagem de capa do card">
         </div>
@@ -21,7 +21,7 @@
             acumular.</p>
         </div>
       </div>
-      <div class="col-sm-6 col-md-4 col-lg-3 mx-sm-4 pt-5 pb-4 card shadow-sm">
+      <div class="col-sm-6 col-md-4 col-lg-3 mx-sm-4 pt-5 pb-4 card shadow">
         <div>
           <img class="card-img-top" src="@assets/joia.svg" style="width: 25%;" alt="Imagem de capa do card">
         </div>

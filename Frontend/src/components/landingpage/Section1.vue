@@ -5,7 +5,7 @@ import BtnRoxo from '@elements/BtnRoxo.vue'
   <div class="bg-bege">
     <div class="container p-3">
       <div class="row">
-        <div class="container m-2 pt-2 pb-5 row text-center justify-content-center align-items-center">
+        <div class="container pt-2 pb-5 row text-center justify-content-center align-items-center">
           <div class="col">
             <div class="col-sm-10">
               <h1><span class="text-decoration">Pontue</span>

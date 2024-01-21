@@ -1,38 +1,31 @@
 <template>
-  <div class="container-fluid bg-dark text-light d-flex align-items-center justify-content-center">
-
-    <div class="row py-5 g-5">
+  <div class="container-fluid py-4 bg-dark text-light">
+    <div class="row px-3 text-center">
       <div class="col">
         <div>
           <a href="/" class="navbar-brand"><i class="fa-solid fa-circle" style="color: #5b438b;"></i>
             <strong> Clubão</strong> Recompensa</a>
-          <p class="pt-2">O clube que vale a pena de verdade.</p>
-        </div>
-      </div>
-      <div class="col-5">
-        <p>Newsletter</p>
-        <div class="input-group">
-          <input type="text" class="form-control bg-transparent rounded-0 text-light custom-input"
-            placeholder="digite seu melhor e-mail" aria-label="Usuário" aria-describedby="basic-addon1">
+          <p class="mt-2">O clube que vale a pena de verdade.</p>
         </div>
       </div>
 
       <div class="col">Siga-nos
-        <div>
+        <div class="mt-3">
           <i class="fa-brands fa-instagram" style="color: #ffffff;"></i>
-          <i class="fa-brands fa-x-twitter" style="color: #ffffff;"></i>
+          <i class="fa-brands mx-3 fa-x-twitter" style="color: #ffffff;"></i>
           <i class="fa-brands fa-facebook" style="color: #ffffff;"></i>
         </div>
       </div>
     </div>
-
+    <hr class="text-light">
+    <p class="pt-3 text-center">©2024 Gabusoft. Todos os direitos reservados.</p>
   </div>
 </template>
 
   
 <script>
 export default {
-  name: 'Section8Footer'
+  name: 'LFooter'
 }
 </script>
 
