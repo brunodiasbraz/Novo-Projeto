@@ -1,7 +1,7 @@
 <template>
   <div class="sticky-top">
-    <nav class="navbar navbar-expand-lg bg-bege">
-      <div class="container-fluid mx-5">
+    <nav id="bg-bege" class="navbar navbar-expand-lg bg-bege sem-sombra">
+      <div class="container-fluid mx-3">
         <a href="/" class="navbar-brand"><i class="fa-solid fa-circle" style="color: #5b438b;"></i>
           <strong> Clubão</strong>Recompensa</a>
 
@@ -39,15 +39,42 @@
 <script>
 export default {
   name: 'NavBar'
-}
+};
+
+document.addEventListener("DOMContentLoaded", function () {
+  var elemento = document.getElementById("bg-bege");
+
+  // Adiciona a classe com-sombra ao rolar para baixo, remove ao rolar para cima
+  window.addEventListener("scroll", function () {
+    if (window.scrollY > 0) {
+      elemento.classList.add("bg-bege");
+      elemento.classList.remove("sem-sombra");
+    } else {
+      elemento.classList.remove("bg-bege");
+      elemento.classList.add("sem-sombra");
+    }
+  });
+});
+
 </script>
 
 <style scoped>
-.bg-bege {
+#bg-bege {
+  transition: box-shadow 0.3s ease;
   background: #FBF7EC;
+}
+
+.bg-bege {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.11);
+  /* Sombra desejada */
 }
 
 .bg-roxo {
   background-color: rgb(91, 67, 139);
+}
+
+.sem-sombra {
+  box-shadow: none;
+  /* Sem sombra por padrão */
 }
 </style>
