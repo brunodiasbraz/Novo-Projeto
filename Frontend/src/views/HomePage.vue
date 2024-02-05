@@ -17,7 +17,6 @@ import LFooter from '@components/Footer.vue'
   <Section5 />
   <Section6 />
   <Section7 />
-  <LFooter />
 </template>
 
 <script>

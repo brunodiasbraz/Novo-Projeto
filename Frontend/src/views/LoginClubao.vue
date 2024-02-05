@@ -1,21 +1,22 @@
 <template>
-  <div class="container-fluid" style="background-color: rgb(238, 238, 238);" >
+  <div class="container-fluid" style="background-color: rgb(238, 238, 238);">
     <div class="container align-middle cont-login">
       <div class="row">
-        <div class="row text-center bg-roxo">
-        <h1 class="text-white" ><strong>Que bom ter você por aqui!</strong></h1>
-        <span class="text-white">Faça seu cadastro (é super rápido) e gerencie seu programa de Fidelidade na palma da sua mão.</span>
-      <div>
-        <button type="submit" class="btn btn-outline-warning px-5">Cadastrar</button>
-      </div> 
+        <!-- <div class="row text-center bg-roxo">
+          <h1 class="text-white"><strong>Que bom ter você por aqui!</strong></h1>
+          <span class="text-white">Faça seu cadastro (é super rápido) e gerencie seu programa de Fidelidade na palma da
+            sua mão.</span>
+          <div>
+            <button type="submit" class="btn btn-outline-warning px-5">Cadastrar</button>
+          </div>
+        </div> -->
+
+        <!---------------------------------------------LOGIN------------------------------------------------->
+
+        <div class="col-sm bg-login">
+          <FormLogin />
+        </div>
       </div>
-
-<!---------------------------------------------LOGIN------------------------------------------------->
-
-      <div class="col-sm bg-login">
-      <FormLogin />
-     </div>
-    </div>
     </div>
   </div>
 </template>
@@ -25,11 +26,12 @@ import FormLogin from "../components/FormLogin.vue"
 </script>
 
 <style scoped>
-.cont-login{
+.cont-login {
   padding: 3%;
 }
-.bg-roxo{
-  display: flex ;
+
+.bg-roxo {
+  display: flex;
   align-items: center;
   background: linear-gradient(180deg, #f08000 0%, #e05a00 100%);
   border-radius: 15px 0px 0px 15px;
@@ -38,7 +40,7 @@ import FormLogin from "../components/FormLogin.vue"
   padding: 10%;
 }
 
-.bg-login{
+.bg-login {
   border-radius: 0px 15px 15px 0px;
   background-color: white;
 }

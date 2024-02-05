@@ -1,19 +1,7 @@
 <template>
-  <div class="container-fluid d-flex bg-bege p-5 justify-content-center">
-    <div class="row container">
-      <div class="col-lg-5 col-md-12 d-flex align-items-center bg-roxo">
-        <div class="row g-4 text-center">
-          <h1 class="text-white"><strong>Que bom ter você por aqui!</strong></h1>
-          <span class="text-white">Faça seu cadastro (é super rápido) e gerencie seu programa de Fidelidade na palma da
-            sua mão.</span>
-          <div>
-            <button type="submit" class="btn btn-outline-warning px-5">Cadastrar</button>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-7 col-md-12">
-        <FormLogin />
-      </div>
+  <div class="container-fluid p-4 bg-bege">
+    <div>
+      <FormLogin />
     </div>
   </div>
 </template>
