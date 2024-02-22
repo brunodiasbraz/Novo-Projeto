@@ -10,7 +10,6 @@ import { VueElement } from 'vue';
 
   <RouterView />
 
-
   <LFooter />
 </template>
 

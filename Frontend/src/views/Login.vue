@@ -1,6 +1,6 @@
 <template>
   <div class="container-fluid p-4 bg-bege">
-    <div>
+    <div class="bg-white mb-4 p-5 shadow rounded-4">
       <FormLogin />
     </div>
   </div>
@@ -16,6 +16,7 @@ import FormLogin from "../components/FormLogin.vue"
   padding: 10%;
   border-radius: 15px 0px 0px 15px;
 }
+
 
 .bg-bege {
   background: #FBF7EC;

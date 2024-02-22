@@ -16,4 +16,7 @@ export default {
 .c-roxo {
     background-color: #5B438B;
 }
+.c-roxo:hover {
+    background-color: #7f6ba7;
+}
 </style>
