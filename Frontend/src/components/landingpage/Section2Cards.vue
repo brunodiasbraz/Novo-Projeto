@@ -55,4 +55,18 @@ export default {
 .cards {
   margin-top: -15%;
 }
+
+
+@media (min-width: 768px) {
+  /* Adapte os valores conforme necessário para ajustar o layout no computador */
+  .cards {
+    margin-top: -10%; /* Ajuste a margem para uma proporção adequada no computador */
+  }
+}
+
+@media (min-width: 1024px) {
+  .cards {
+    margin-top: -4%; /* Ajuste adicional para telas maiores, se necessário */
+  }
+}
 </style>

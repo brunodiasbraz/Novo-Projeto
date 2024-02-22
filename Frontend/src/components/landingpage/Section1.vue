@@ -3,21 +3,18 @@ import BtnRoxo from '@elements/BtnRoxo.vue'
 </script>
 <template>
   <div class="bg-bege">
-    <div class="container p-3">
-      <div class="row pt-2 pb-5 text-center align-items-center">
-        <div class="col">
+    <div class="container p-3 p-md-5">
+      <div class="row pt-sm-2 pb-5 text-center justify-content-center align-items-center">
+        <div class="col-md-9">
           <h1><span class="text-decoration">Pontue</span>
             a cada compra e troque por recompensas
             <strong class="c-roxo-text">exclusivas.</strong>
           </h1>
-          <p class="col-sm-9 mb-4 mt-3 text-secondary">
+          <p class="col-sm mb-4 mt-3 text-secondary">
             Conheça as vantagens de entrar para o melhor Clube Fidelidade do país.
           </p>
           <BtnRoxo text="Experimente grátis" class="text-uppercase" />
         </div>
-        <!-- <div class=" col-sm-4">
-            <img class="img-fluid" src="@assets/Group.png" style="width: 85%;" alt="aqui uma imagem" />
-          </div> -->
       </div>
     </div>
   </div>
@@ -32,6 +29,9 @@ export default {
 <style scoped>
 .bg-bege {
   background: #FBF7EC;
+
+
+  
 }
 
 .c-roxo {
@@ -45,5 +45,22 @@ export default {
 
 .text-decoration {
   text-decoration: underline wavy #FFDE59;
+  
+}
+
+h1{
+    font-size: 26px; /* Tamanho normal para dispositivos móveis */
+
+  @media (min-width: 768px) {
+    font-size: 60px;
+  }
+}
+
+p{
+    font-size: 16px; /* Tamanho normal para dispositivos móveis */
+
+  @media (min-width: 768px) {
+    font-size: 24px;
+  }
 }
 </style>

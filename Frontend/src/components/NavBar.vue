@@ -2,16 +2,19 @@
   <div class="sticky-top">
     <nav id="bg-bege" class="navbar navbar-expand-lg bg-bege sem-sombra">
       <div class="container-fluid mx-3">
+        <!-- Logotipo no canto esquerdo -->
         <a href="/" class="navbar-brand"><i class="fa-solid fa-circle" style="color: #5b438b;"></i>
           <strong> Clubão</strong>Recompensa</a>
 
+        <!-- Botão de toggler para dispositivos móveis -->
         <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
           aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <i class="fa-solid fa-bars-staggered" style="color: #5b438b;"></i>
         </button>
 
-        <div class="collapse navbar-collapse text-end" id="navbarNav">
-          <ul class="navbar-nav">
+        <!-- Itens da navbar no centro -->
+        <div class="collapse navbar-collapse text-center" id="navbarNav">
+          <ul class="navbar-nav mx-auto">
             <li class="nav-item">
               <a class="nav-link text-secondary" href="/NossoClube">Home</a>
             </li>
@@ -26,8 +29,9 @@
             </li>
           </ul>
 
-          <div class="dropdown-center">
-            <a class="btn rounded-5 text-white mt-3 bg-roxo px-4" role="button" href="/NossoClube/login">Área do
+          <!-- Botão no canto direito -->
+          <div>
+            <a class="btn rounded-5 text-white my-2 bg-roxo px-4" role="button" href="/NossoClube/login">Área do
               cliente</a>
           </div>
         </div>
@@ -35,6 +39,7 @@
     </nav>
   </div>
 </template>
+
 
 <script>
 export default {
