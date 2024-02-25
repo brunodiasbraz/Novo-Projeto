@@ -7,11 +7,6 @@ const jwt = require('jsonwebtoken')
 const validator = require("email-validator");
 const nodemailer = require("nodemailer");
 const { uid, suid } = require('rand-token');
-
-
-
-
-
 const User = require("./models/User");
 
 
@@ -29,7 +24,7 @@ function checkToken(req, res, next) {
 
     next();
   } catch (err) {
-    res.status(400).json({ msg: "O Token é inválido!" });
+    res.status(401).json({ msg: "O Token é inválido!" });
   }
 }
 
@@ -47,6 +42,8 @@ routes.get("/user/:id", checkToken, async (req, res) => {
 
   res.status(200).json({ user });
 });
+
+
 
 // Private Route
 
@@ -188,29 +185,24 @@ routes.post("/auth/login", async (req, res) => {
 
   try {
     const secret = process.env.SECRET;
-
+    const expiresIn = '7d'
     const token = jwt.sign(
       {
-        id: user._id,
+        sub: user._id,
       },
-      secret
+      secret, { expiresIn }
     );
+    res.cookie('jwt',token,{
+      maxAge:604800*1000,
+      httpOnly:true,
+      secure:true
+    })
 
     res.status(200).json({ msg: "Autenticação realizada com sucesso!", token });
   } catch (error) {
     res.status(500).json({ msg: error });
   }
 });
-routes.post('/login', (req, res) => {
-    const { email, password } = req.body;
-    const user = users.find(user => user.email === email && user.password === password);
-    if (user)
-    {
-        return res.status(200).json(user);
-    }
 
-    return res.status(401).json({ message: 'Credenciais invalidas'});
-})
-// Open Route
 
 module.exports = routes;
