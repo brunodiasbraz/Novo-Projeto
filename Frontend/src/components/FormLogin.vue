@@ -1,9 +1,9 @@
 <template>
   <div>
     <form class="form-signin">
-      <h1 class="mb-3 font-weight-normal text-center">Entrar</h1>
+      <h1 class="font-weight-normal text-center">Entrar</h1>
 
-      <div class="row g-3">
+      <div class="row p-3 g-3">
         <label for="emailLogin" class="sr-only">Seu email</label>
         <input v-model="email" type="email" id="emailLogin" class="form-control" placeholder="Seu email" required
           autofocus>
@@ -16,8 +16,8 @@
           </label>
         </div>
       </div>
-      <BtnRoxo class="col-12 mt-3" id="btnLogin" type="submit" text="Entrar" @click="submitForm" />
-      <div class="row text-center justify-content-center mb-4">
+      <BtnRoxo class="col-12" id="btnLogin" type="submit" text="Entrar" @click="submitForm" />
+      <div class="row text-center p-2 justify-content-center mb-4">
         <span class="my-3">Ou entre com o</span>
         <a id="btnLoginGoogle" class="btn btn-outline-warning rounded-5">Google</a>
       </div>

@@ -3,7 +3,7 @@
     <form class="form-signin">
       <h1 class="mb-4 font-weight-normal text-center">Registre-se</h1>
 
-      <div class="row g-3">
+      <div class="row p-3 g-3">
         <label for="nomeRegistro" class="sr-only">Nome Completo</label>
         <input v-model="name" type="email" id="nomeRegistro" class="form-control" placeholder="Nome completo" required
           autofocus>
