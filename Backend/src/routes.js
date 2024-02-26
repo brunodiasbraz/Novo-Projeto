@@ -12,9 +12,8 @@ const User = require("./models/User");
 
 
 function checkToken(req, res, next) {
-  const authHeader = req.headers["authorization"];
-  const token = authHeader && authHeader.split(" ")[1];
-
+  const token = eq.cookie.jwt;
+  
   if (!token) return res.status(401).json({ msg: "Acesso negado!" });
 
   try {
@@ -177,13 +176,20 @@ routes.post("/auth/login", async (req, res) => {
   }
 
   // check if password match
-  const checkPassword = await bcrypt.compare(password, user.password);
+  const checkPassword =  bcrypt.compare(password, user.password);
 
   if (!checkPassword) {
     return res.status(422).json({ msg: "Senha inválida" });
   }
 
   try {
+
+if(req.cookies.jwt){
+}
+
+
+
+
     const secret = process.env.SECRET;
     const expiresIn = '7d'
     const token = jwt.sign(
