@@ -11,9 +11,10 @@ const User = require("./models/User");
 
 
 
+
 function checkToken(req, res, next) {
   const token = eq.cookie.jwt;
-  
+
   if (!token) return res.status(401).json({ msg: "Acesso negado!" });
 
   try {
@@ -54,24 +55,24 @@ routes.get("/", (req, res) => {
 
 
 routes.post("/auth/verify", async (req, res) => {
-  const { token_verify} = req.body;
-console.log(token_verify)
- // check if user exists
- const userExists = await User.findOne({ token_verify: token_verify });
+  const { token_verify } = req.body;
+  console.log(req)
+  // check if user exists
+  const userExists = await User.findOne({ token_verify: token_verify });
 
- if (!userExists) {
-   return res.status(422).json({ msg: "Esse link expirou ou não é válido!" });
- }
+  if (!userExists) {
+    return res.status(422).json({ msg: "Esse link expirou ou não é válido!" });
+  }
 
- userExists.email_verify=Date();
- userExists.token_verify=null;
- try {
-  await userExists.save();
+  userExists.email_verify = Date();
+  userExists.token_verify = null;
+  try {
+    await userExists.save();
 
-  res.status(201).json({ msg: "Seu email foi verificado, Você será direcionado para a tela de Login" });
- } catch (error) {
-  console.log(error);
- }
+    res.status(201).json({ msg: "Seu email foi verificado, Você será direcionado para a tela de Login" });
+  } catch (error) {
+    console.log(error);
+  }
 });
 
 routes.post("/auth/register", async (req, res) => {
@@ -110,7 +111,7 @@ routes.post("/auth/register", async (req, res) => {
   const salt = await bcrypt.genSalt(12);
   const passwordHash = await bcrypt.hash(password, salt);
   const sendEmail = process.env.EMAIL;
-  const  emailPassword = process.env.EMAIL_PASSWORD;
+  const emailPassword = process.env.EMAIL_PASSWORD;
   // create user
   const user = new User({
     name,
@@ -118,7 +119,7 @@ routes.post("/auth/register", async (req, res) => {
     passwordHash,
   });
   const verifyToken = suid(16);
-  user.token_verify=verifyToken;
+  user.token_verify = verifyToken;
 
   console.log(verifyToken)
   try {
@@ -127,28 +128,28 @@ routes.post("/auth/register", async (req, res) => {
     res.status(201).json({ msg: "Usuário criado com sucesso! Verifique sua caixa de email e faça a validação do seu cadastro" });
 
     let message = {
-        from: "gabusoftapp@gmail.com",
-        to: user.email,
-        subject: "Validação de cadastro Nosso Clube",
-        text: "Plaintext version of the message",
-        html:  '<img src="https://ci3.googleusercontent.com/meips/ADKq_NYL2HBvmfArevX3NVujmQCPWNFsgX3e2hjNCIZn7wwvXIa1forX93ezrWp2zlocURZiHNdcmUKX7nVR1hykvEYH9z2V1PNazvd4tbOmYD4KRmNam4z_uunMuZD-cp4vJl0hboEc_C7xPxOvlJ9qU6pUjTiS2cwgesI=s0-d-e1-ft#https://mcusercontent.com/80734d74fa766a626186188dc/images/64dbc363-0c78-fb86-2e2f-a7e49b5615f1.png" alt="Imagem Externa">'
-        +`<p>Olá, Por favor, clique no link abaixo para verificar seu endereço de e-mail:</p>`
-        +`<a href="https://seusite.com/verify-email?token=${verifyToken}">`
-        +`Verificar Email</a><p>Se você não solicitou esta verificação, ignore este e-mail.</p>`
-    ,
-}
+      from: "gabusoftapp@gmail.com",
+      to: user.email,
+      subject: "Validação de cadastro Nosso Clube",
+      text: "Plaintext version of the message",
+      html: '<img src="https://ci3.googleusercontent.com/meips/ADKq_NYL2HBvmfArevX3NVujmQCPWNFsgX3e2hjNCIZn7wwvXIa1forX93ezrWp2zlocURZiHNdcmUKX7nVR1hykvEYH9z2V1PNazvd4tbOmYD4KRmNam4z_uunMuZD-cp4vJl0hboEc_C7xPxOvlJ9qU6pUjTiS2cwgesI=s0-d-e1-ft#https://mcusercontent.com/80734d74fa766a626186188dc/images/64dbc363-0c78-fb86-2e2f-a7e49b5615f1.png" alt="Imagem Externa">'
+        + `<p>Olá, Por favor, clique no link abaixo para verificar seu endereço de e-mail:</p>`
+        + `<a href="https://seusite.com/verify-email?token=${verifyToken}">`
+        + `Verificar Email</a><p>Se você não solicitou esta verificação, ignore este e-mail.</p>`
+      ,
+    }
 
     let transporter = nodemailer.createTransport({
-         host: "smtp.gmail.com",
-        port: 465,
-        secure: true, // use TLS
-        auth: {
-          user: sendEmail,
-          pass: emailPassword,
-        },
-        connectionTimeout: 5000, // Ajuste o valor conforme necessário
-      });
-      transporter.sendMail(message).then(console.log('enviado com sucesso')).catch(console.error);
+      host: "smtp.gmail.com",
+      port: 465,
+      secure: true, // use TLS
+      auth: {
+        user: sendEmail,
+        pass: emailPassword,
+      },
+      connectionTimeout: 5000, // Ajuste o valor conforme necessário
+    });
+    transporter.sendMail(message).then(console.log('enviado com sucesso')).catch(console.error);
 
 
   } catch (error) {
@@ -170,41 +171,38 @@ routes.post("/auth/login", async (req, res) => {
 
   // check if user exists
   const user = await User.findOne({ email: email });
-
   if (!user) {
     return res.status(404).json({ msg: "Usuário não encontrado!" });
   }
 
   // check if password match
-  const checkPassword =  bcrypt.compare(password, user.password);
+  const checkPassword = bcrypt.compare(password, user.passwordHash);
 
   if (!checkPassword) {
     return res.status(422).json({ msg: "Senha inválida" });
+
   }
 
   try {
-
-if(req.cookies.jwt){
-}
-
-
 
 
     const secret = process.env.SECRET;
     const expiresIn = '7d'
     const token = jwt.sign(
       {
-        sub: user._id,
+        user: user.email,
       },
-      secret, { expiresIn }
+      secret, {
+      expiresIn: expiresIn
+    }
     );
-    res.cookie('jwt',token,{
-      maxAge:604800*1000,
-      httpOnly:true,
-      secure:true
-    })
-
-    res.status(200).json({ msg: "Autenticação realizada com sucesso!", token });
+    res.cookie('jwt', token, {
+      path: "/", // Cookie is accessible from all paths
+      maxAge: 604800,
+      httpOnly: true,
+      secure: true,
+      sameSite: "None",
+    }).status(200).json({ msg: "Autenticação realizada com sucesso!" });
   } catch (error) {
     res.status(500).json({ msg: error });
   }

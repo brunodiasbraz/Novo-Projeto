@@ -2,12 +2,14 @@
   <div class="container-fluid p-4 bg-bege">
     <div class="bg-white mb-4 p-5 shadow rounded-4">
       <FormLogin />
+      <!-- <FormRegistro /> -->
     </div>
   </div>
 </template>
   
 <script setup>
 import FormLogin from "../components/FormLogin.vue"
+import FormRegistro from "../components/FormRegistro.vue"
 </script>
 
 <style scoped>
