@@ -39,14 +39,20 @@ const password = ref('');
 const submitForm = async () => {
   try {
 
-    const response = await axios.post('http://localhost:3000/auth/login', {
+    const response = await axios.post('http://localhost:3000/auth/login',  {
       email: email.value,
       password: password.value,
-    });
-    const response2 = await axios.post('http://localhost:3000/auth/verify', {
+      
+    },{
+        withCredentials: true,
+      },);
+    const response2 = await axios.post('http://localhost:3000/auth/verify',  {
       email: email.value,
       password: password.value,
-    });
+    },{
+        withCredentials: true,
+      },
+    );
 
     console.log('Resposta do backend:', response.data);
   } catch (error) {

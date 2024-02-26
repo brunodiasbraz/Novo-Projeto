@@ -56,7 +56,7 @@ routes.get("/", (req, res) => {
 
 routes.post("/auth/verify", async (req, res) => {
   const { token_verify } = req.body;
-  console.log(req)
+  console.log(req.cookies.jwt)
   // check if user exists
   const userExists = await User.findOne({ token_verify: token_verify });
 
@@ -197,11 +197,10 @@ routes.post("/auth/login", async (req, res) => {
     }
     );
     res.cookie('jwt', token, {
-      path: "/", // Cookie is accessible from all paths
-      maxAge: 604800,
+     // path: "/", // Cookie is accessible from all paths
+      maxAge: 604800*1000,
       httpOnly: true,
       secure: true,
-      sameSite: "None",
     }).status(200).json({ msg: "Autenticação realizada com sucesso!" });
   } catch (error) {
     res.status(500).json({ msg: error });
