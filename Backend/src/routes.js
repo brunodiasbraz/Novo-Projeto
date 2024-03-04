@@ -65,11 +65,9 @@ routes.post("/auth/verify", async (req, res) => {
   try {
     await userExists.save();
 
-    res
-      .status(201)
-      .json({
-        msg: "Seu email foi verificado, Você será direcionado para a tela de Login",
-      });
+    res.status(201).json({
+      msg: "Seu email foi verificado, Você será direcionado para a tela de Login",
+    });
   } catch (error) {
     console.log(error);
   }
@@ -125,11 +123,9 @@ routes.post("/auth/register", async (req, res) => {
   try {
     await user.save();
 
-    res
-      .status(201)
-      .json({
-        msg: "Usuário criado com sucesso! Verifique sua caixa de email e faça a validação do seu cadastro",
-      });
+    res.status(201).json({
+      msg: "Usuário criado com sucesso! Verifique sua caixa de email e faça a validação do seu cadastro",
+    });
 
     let message = {
       from: "gabusoftapp@gmail.com",
