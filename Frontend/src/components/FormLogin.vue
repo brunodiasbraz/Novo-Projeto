@@ -17,17 +17,18 @@
         </div>
       </div>
       <BtnRoxo class="col-12" id="btnLogin" type="submit" text="Entrar" @click="submitForm" />
-      <div class="row text-center p-2 justify-content-center mb-4">
+      <div class="row text-center px-3 justify-content-center mb-4">
         <span class="my-3">Ou entre com o</span>
-        <a id="btnLoginGoogle" class="btn btn-outline-warning rounded-5">Google</a>
+        <a id="btnLoginGoogle" class="btn btn-light shadow border text-secondary rounded-5"><img
+            src="@/assets/google.svg" class="mx-1 p-md-1 imgGoogle" alt="logo google" style="width: 10%;"> Google</a>
       </div>
       <hr class="my-4">
-      <p>Ainda não é cadastrado? <a href="#">Clique aqui</a> e registre-se agora!</p>
+      <p>Ainda não é cadastrado? <a href="/registrar">Clique aqui</a> e registre-se agora!</p>
 
     </form>
   </div>
 </template>
-  
+
 <script setup>
 import { ref } from 'vue';
 import axios from 'axios';

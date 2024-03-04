@@ -16,7 +16,7 @@
         <div class="collapse navbar-collapse text-center" id="navbarNav">
           <ul class="navbar-nav mx-auto">
             <li class="nav-item">
-              <a class="nav-link text-secondary" href="/NossoClube">Home</a>
+              <a class="nav-link text-secondary" href="/">Home</a>
             </li>
             <li class="nav-item">
               <a class="nav-link text-secondary" href="#">Planos</a>
@@ -31,8 +31,8 @@
 
           <!-- Botão no canto direito -->
           <div>
-            <a href="#" class="px-3 text-secondary" style="text-decoration: none;">Cadastre-se</a>
-            <a class="btn rounded-5 text-white my-2 bg-roxo px-4" role="button" href="/NossoClube/login">Área do
+            <a href="/registrar" class="px-3 text-secondary" style="text-decoration: none;">Cadastre-se</a>
+            <a class="btn rounded-5 text-white my-2 bg-roxo px-4" role="button" href="/login">Área do
               cliente</a>
           </div>
         </div>

@@ -17,15 +17,20 @@
         <input v-model="confirmPassword" type="password" id="confirmPasswordRegistro" class="form-control"
           placeholder="Confirme sua senha" required>
       </div>
-      <div class="mt-4 alert alert-warning alert-dismissible fade show" id="alertSuccess" role="alert">
+      <div class="mt-4 alert alert-danger alert-dismissible fade show d-none" id="alertError" role="alert">
+        Ocorreu um problema durante o registro. Tente novamente mais tarde.
+      </div>
+      <div class="mt-4 alert alert-success alert-dismissible fade show d-none" id="alertSuccess" role="alert">
         Um e-mail de confirmação foi enviado. <strong>Acesse seu e-mail e clique no link para continuar o
           cadastro.</strong>
       </div>
       <BtnRoxo class="col-12 mt-3" id="btnLogin" type="submit" text="Registrar" @click="submitForm" />
+      <hr class="my-4">
+      <p>Já possui cadastro? <a href="/login">Clique aqui</a> para fazer o login.</p>
     </form>
   </div>
 </template>
-  
+
 <script setup>
 import { ref } from 'vue';
 import axios from 'axios';
@@ -57,8 +62,25 @@ const submitForm = async () => {
       confirmpassword: confirmPassword.value,
     });
 
+    if (response.status === 201) {
+      // Exibir a div de sucesso
+      document.getElementById('alertSuccess').classList.remove('d-none');
+      setTimeout(() => {
+        alertSuccess.classList.add('d-none');
+      }, 8000);
+    } else {
+      // Exibir a div de erro
+      document.getElementById('alertError').classList.remove('d-none');
+      setTimeout(() => {
+        alertError.classList.add('d-none');
+      }, 5000);
+    }
   } catch (error) {
-    console.error('Erro ao enviar formulário 2:', error.message); // Adicione .message
+    document.getElementById('alertError').classList.remove('d-none');
+    setTimeout(() => {
+      alertError.classList.add('d-none');
+    }, 5000);
+    //console.error('Erro ao enviar formulário 2:', error.message); // Adicione .message
   }
 };
 
