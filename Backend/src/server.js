@@ -8,7 +8,7 @@ const routes = require('./routes');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const corsoption={
-  origin:"http://localhost:5173", //origin from where you requesting
+  origin:"http://localhost", //origin from where you requesting
   credentials:true
   }
   const app = express();
