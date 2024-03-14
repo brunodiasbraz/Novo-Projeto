@@ -1,17 +1,14 @@
 const express = require("express");
 require('dotenv').config()
 const mongoose = require('mongoose')
-const bcrypt = require('bcrypt')
-const jwt = require('jsonwebtoken')
-const req = require("express/lib/request");
 const routes = require('./routes');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const corsoption={
-  origin:"http://localhost", //origin from where you requesting
-  credentials:true
+  origin: 'http://localhost:3000/auth/register', // URL do seu frontend   
+   credentials:true
   }
-  const app = express();
+const app = express();
   app.use(cors(corsoption));
 app.use(cookieParser());
 app.use(express.json());
