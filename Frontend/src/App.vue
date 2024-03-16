@@ -12,4 +12,3 @@ import { VueElement } from 'vue';
 
   <LFooter />
 </template>
-

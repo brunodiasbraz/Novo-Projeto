@@ -20,7 +20,7 @@
       <div class="row text-center px-3 justify-content-center mb-4">
         <span class="my-3">Ou entre com o</span>
         <a id="btnLoginGoogle" class="btn btn-light shadow border text-secondary rounded-5"><img
-            src="@/assets/google.svg" class="mx-1 p-md-1 imgGoogle" alt="logo google" style="width: 10%;"> Google</a>
+            src="@/assets/google.svg" class="mx-1 p-md-1 imgGoogle" alt="logo google" style="width: 23px;"> Google</a>
       </div>
       <hr class="my-4">
       <p>Ainda não é cadastrado? <a href="/registrar">Clique aqui</a> e registre-se agora!</p>
@@ -40,14 +40,14 @@ const password = ref('');
 const submitForm = async () => {
   try {
 
-    const response = await axios.post('http://localhost:3000/auth/login',  {
+    const response = await axios.post('http://localhost:3000/auth/login', {
       email: email.value,
       password: password.value,
-      
-    },{
-        withCredentials: true,
-      },);
-   
+
+    }, {
+      withCredentials: true,
+    },);
+
     console.log('Resposta do backend:', response.data);
   } catch (error) {
 

@@ -1,34 +1,41 @@
 <template>
-  <div>
-    <form class="form-signin">
-      <h1 class="mb-4 font-weight-normal text-center">Registre-se</h1>
+  <h1 class="mb-4 font-weight-normal text-center">Registre-se</h1>
 
-      <div class="row p-3 g-3">
-        <label for="nomeRegistro" class="sr-only">Nome Completo</label>
-        <input v-model="name" type="email" id="nomeRegistro" class="form-control" placeholder="Nome completo" required
-          autofocus>
-        <label for="emailRegistro" class="sr-only">Seu email</label>
-        <input v-model="email" type="email" id="emailRegistro" class="form-control" placeholder="Seu email" required
-          autofocus>
-        <label for="passwordRegistro" class="sr-only">Sua senha</label>
-        <input v-model="password" type="password" id="passwordRegistro" class="form-control" placeholder="Sua senha"
-          required>
-        <label for="confirmPasswordRegistro" class="sr-only">Confirme sua senha</label>
-        <input v-model="confirmPassword" type="password" id="confirmPasswordRegistro" class="form-control"
-          placeholder="Confirme sua senha" required>
-      </div>
-      <div class="mt-4 alert alert-danger alert-dismissible fade show d-none" id="alertError" role="alert">
-        Ocorreu um problema durante o registro. Tente novamente mais tarde.
-      </div>
-      <div class="mt-4 alert alert-success alert-dismissible fade show d-none" id="alertSuccess" role="alert">
-        Um e-mail de confirmação foi enviado. <strong>Acesse seu e-mail e clique no link para continuar o
-          cadastro.</strong>
-      </div>
-      <BtnRoxo class="col-12 mt-3" id="btnLogin" type="submit" text="Registrar" @click="submitForm" />
-      <hr class="my-4">
-      <p>Já possui cadastro? <a href="/login">Clique aqui</a> para fazer o login.</p>
-    </form>
+  <form class="col-10 d-grid gap-3">
+    <div class="form-group">
+      <label for="emailRegistro" class="sr-only">Seu email</label>
+      <input v-model="email" type="email" id="emailRegistro" class="form-control" placeholder="Seu email" required
+        autofocus>
+      <small id="emailHelp" class="form-text text-muted">Nunca vamos compartilhar seu email, com ninguém.</small>
+    </div>
+    <div class="form-group">
+      <label for="passwordRegistro" class="sr-only">Sua senha</label>
+      <input type="password" class="form-control" id="passwordRegistro" placeholder="Senha">
+    </div>
+    <div class="form-group">
+      <label for="confPasswordRegistro" class="sr-only">Confirme sua senha</label>
+      <input v-model="password" type="password" id="confPasswordRegistro" class="form-control"
+        placeholder="Confirme sua senha" required>
+    </div>
+    <div class="form-group form-check">
+      <input type="checkbox" class="form-check-input" id="exampleCheck1">
+      <label class="form-check-label" for="exampleCheck1">Clique em mim</label>
+    </div>
+    <BtnRoxo class="col-12 mt-3" id="btnLogin" type="submit" text="Registrar" @click="submitForm" />
+
+  </form>
+  <!----------Alertas----------->
+  <div class="mt-4 alert alert-danger alert-dismissible fade show d-none" id="alertError" role="alert">
+    Ocorreu um problema durante o registro. Tente novamente mais tarde.
   </div>
+  <div class="mt-4 alert alert-success alert-dismissible fade show d-none" id="alertSuccess" role="alert">
+    Um e-mail de confirmação foi enviado. <strong>Acesse seu e-mail e clique no link para continuar o
+      cadastro.</strong>
+  </div>
+  <!----------Fim Alertas----------->
+  <hr class="mt-4">
+  <p class="text-center px-5">Já possui cadastro? <a href="/login">Clique aqui</a> para fazer o login.</p>
+
 </template>
 
 <script setup>
@@ -90,9 +97,5 @@ const submitForm = async () => {
 <style scoped>
 a {
   text-decoration: none;
-}
-
-.login {
-  border-radius: 0px 15px 15px 0px;
 }
 </style>

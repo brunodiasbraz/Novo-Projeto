@@ -1,6 +1,7 @@
 <script setup>
 import BtnRoxo from '@elements/BtnRoxo.vue'
 </script>
+
 <template>
   <div class="bg-bege">
     <div class="container p-3 p-md-5">
@@ -19,16 +20,19 @@ import BtnRoxo from '@elements/BtnRoxo.vue'
     </div>
   </div>
 </template>
-  
+
 <script>
 export default {
   name: 'Section1'
 }
+
 </script>
 
 <style scoped>
 .bg-bege {
-  background: #FBF7EC;  
+  background: #FBF7EC;
+  padding: 5% 0;
+
 }
 
 .c-roxo {
@@ -42,19 +46,21 @@ export default {
 
 .text-decoration {
   text-decoration: underline wavy #FFDE59;
-  
+
 }
 
-h1{
-    font-size: 26px; /* Tamanho normal para dispositivos móveis */
+h1 {
+  font-size: 26px;
+  /* Tamanho normal para dispositivos móveis */
 
   @media (min-width: 768px) {
     font-size: 60px;
   }
 }
 
-p{
-    font-size: 16px; /* Tamanho normal para dispositivos móveis */
+p {
+  font-size: 16px;
+  /* Tamanho normal para dispositivos móveis */
 
   @media (min-width: 768px) {
     font-size: 24px;

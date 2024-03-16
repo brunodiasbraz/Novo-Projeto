@@ -1,5 +1,5 @@
 <template>
-    <a class="btn rounded-5 px-5 text-white c-roxo shadow" role="button" href="#">
+    <a class="btn rounded-5 text-white c-roxo shadow" role="button" href="#">
         {{ text }}
     </a>
 </template>
@@ -16,6 +16,7 @@ export default {
 .c-roxo {
     background-color: #5B438B;
 }
+
 .c-roxo:hover {
     background-color: #7f6ba7;
 }
