@@ -1,14 +1,26 @@
 version: '3.8'
-
+networks:
+  backend_frontend_network:
+    driver: bridge
 services:
   backend:
+    restart: unless-stopped
     build:
       context: ./Backend
     ports:
       - "3000:3000"
+    networks:
+      - backend_frontend_network
+    volumes:
+      - ./Backend:/usr/app
 
   frontend:
+    restart: unless-stopped
     build:
       context: ./Frontend
     ports:
       - "80:80"
+    networks:
+      - backend_frontend_network
+    volumes:
+      - ./Frontend:/usr/app

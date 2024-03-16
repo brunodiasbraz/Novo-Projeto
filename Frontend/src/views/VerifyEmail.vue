@@ -15,6 +15,9 @@ export default {
 
         const resposta = submitForm(this.$route.query.token)
         console.log(resposta)
+        if(resposta.status==201){
+            router.push({ path: '/home', replace: true })
+        }
 
     }
 

@@ -1,7 +1,6 @@
 require("dotenv").config();
 const express = require("express");
 const routes = express.Router();
-const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const validator = require("email-validator");
@@ -10,9 +9,9 @@ const { uid, suid } = require("rand-token");
 const User = require("./models/User");
 
 function checkToken(req, res, next) {
-  const token = eq.cookie.jwt;
+  const token = req.cookie.jwt || null;
 
-  if (!token) return res.status(401).json({ msg: "Acesso negado!" });
+  if (typeof (token) == undefined || !token || token == '') return res.status(401).json({ msg: "Acesso negado!" });
 
   try {
     const secret = process.env.SECRET;
@@ -43,7 +42,7 @@ routes.get("/user/:id", checkToken, async (req, res) => {
 
 // Open Route
 routes.get("/", (req, res) => {
-  res.status(200).json({ msg: "Bem vindo a API!" });
+  res.status(200).json({ msg: "Bem vindo a API!!!!!!!####@" });
 });
 
 routes.post("/auth/verify", async (req, res) => {
@@ -57,7 +56,7 @@ routes.post("/auth/verify", async (req, res) => {
   const userExists = await User.findOne({ token_verify: token_verify });
 
   if (!userExists) {
-    return res.status(422).json({ msg: "Esse link expirou ou não é válido!" });
+    return res.status(422).json({ msg: "Esse link expirou ou não é válido! " });
   }
 
   userExists.email_verify = Date();
@@ -93,9 +92,7 @@ routes.post("/auth/register", async (req, res) => {
   }
 
   if (password != confirmpassword) {
-    return res
-      .status(422)
-      .json({ msg: "A senha e a confirmação precisam ser iguais!" });
+    return res.status(422).json({ msg: "A senha e a confirmação precisam ser iguais!" });
   }
 
   // check if user exists
@@ -135,7 +132,7 @@ routes.post("/auth/register", async (req, res) => {
       html:
         '<img src="https://ci3.googleusercontent.com/meips/ADKq_NYL2HBvmfArevX3NVujmQCPWNFsgX3e2hjNCIZn7wwvXIa1forX93ezrWp2zlocURZiHNdcmUKX7nVR1hykvEYH9z2V1PNazvd4tbOmYD4KRmNam4z_uunMuZD-cp4vJl0hboEc_C7xPxOvlJ9qU6pUjTiS2cwgesI=s0-d-e1-ft#https://mcusercontent.com/80734d74fa766a626186188dc/images/64dbc363-0c78-fb86-2e2f-a7e49b5615f1.png" alt="Imagem Externa">' +
         `<p>Olá, Por favor, clique no link abaixo para verificar seu endereço de e-mail:</p>` +
-        `<a href="https://seusite.com/verify-email?token=${verifyToken}">` +
+        `<a href="https://localhost/verify-email?token=${verifyToken}">` +
         `Verificar Email</a><p>Se você não solicitou esta verificação, ignore este e-mail.</p>`,
     };
 
