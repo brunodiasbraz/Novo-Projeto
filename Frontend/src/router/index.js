@@ -3,8 +3,8 @@ import HomePage from '../views/HomePage.vue'
 import Login from '../views/Login.vue'
 import Registro from '../views/Registro.vue'
 import VerifyEmail from '../views/VerifyEmail.vue'
-import HomeAPP from '../views/HomeAPP.vue'
-//import Profile from '../views/Profile.vue'
+import HomeAPP from '../views/app/Home.vue'
+import Profile from '../views/app/User.vue'
 //import Settings from '../views/Settings.vue'
 import axios from 'axios';
 
@@ -30,18 +30,18 @@ const routes = [
     component: HomeAPP,
     meta: { requiresAuth: true }
   },
-/*   {
+  {
     path: '/app/profile',
     name: 'profile',
     component: Profile,
     meta: { requiresAuth: true }
   },
-  {
+  /* {
     path: '/app/settings',
     name: 'settings',
     component: Settings,
     meta: { requiresAuth: true }
-  }, */
+  },  */
   {
     path: '/verify-email',
     name: 'verify-email',
