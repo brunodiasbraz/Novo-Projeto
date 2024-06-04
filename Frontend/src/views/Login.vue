@@ -1,13 +1,17 @@
 <template>
+  <NavBar />
   <div class="container-fluid d-flex justify-content-center p-4 bg-bege">
     <div class="col-md-4 bg-white mb-4 p-5 shadow rounded-4">
       <FormLogin />
     </div>
   </div>
+  <LFooter />
 </template>
 
 <script setup>
+import NavBar from '@components/NavBar.vue'
 import FormLogin from "../components/FormLogin.vue"
+import LFooter from '@components/Footer.vue'
 
 </script>
 

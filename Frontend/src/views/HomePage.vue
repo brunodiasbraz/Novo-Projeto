@@ -1,5 +1,6 @@
 
 <script setup>
+import NavBar from '@components/NavBar.vue'
 import Section1 from '@components/landingpage/Section1.vue'
 import Section2 from '@components/landingpage/Section2Cards.vue'
 import Section3 from '@components/landingpage/Section3.vue'
@@ -10,6 +11,7 @@ import Section7 from '@components/landingpage/Section7.vue'
 import LFooter from '@components/Footer.vue'
 </script>
 <template>
+  <NavBar />
   <Section1 />
   <Section2 />
   <Section3 />
@@ -17,6 +19,7 @@ import LFooter from '@components/Footer.vue'
   <Section5 />
   <Section6 />
   <Section7 />
+  <LFooter />
 </template>
 
 <script>

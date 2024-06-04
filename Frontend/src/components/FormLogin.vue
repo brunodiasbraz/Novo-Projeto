@@ -1,6 +1,6 @@
 <template>
   <div>
-    <form class="form-signin">
+    <form class="form-signin" @submit.prevent="submitForm">
       <h1 class="font-weight-normal text-center">Entrar</h1>
 
       <div class="row p-3 g-3">
@@ -32,10 +32,12 @@
 <script setup>
 import { ref } from 'vue';
 import axios from 'axios';
+import { useRouter } from 'vue-router';
 import BtnRoxo from '@elements/BtnRoxo.vue';
 
 const email = ref('');
 const password = ref('');
+const router = useRouter();
 
 const submitForm = async () => {
   try {
@@ -49,6 +51,11 @@ const submitForm = async () => {
     },);
 
     console.log('Resposta do backend:', response.data);
+
+    if (response.status === 200) {
+      localStorage.setItem('token', response.data.token);
+      router.push('/app/home');
+    }
   } catch (error) {
 
     console.error('Erro ao enviar formulário login:', error);

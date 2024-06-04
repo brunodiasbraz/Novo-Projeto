@@ -76,10 +76,10 @@ routes.post("/auth/register", async (req, res) => {
   const { name, email, password, confirmpassword } = req.body;
 
   // validations
-  if (!name) {
+  /* if (!name) {
     return res.status(422).json({ msg: "O nome é obrigatório!" });
   }
-
+ */
   if (!email) {
     return res.status(422).json({ msg: "O email é obrigatório!" });
   }
@@ -166,7 +166,7 @@ routes.post("/auth/login", async (req, res) => {
   if (!password) {
     return res.status(422).json({ msg: "A senha é obrigatória!" });
   }
-
+ 
   // check if user exists
   const user = await User.findOne({ email: email });
   if (!user) {
@@ -201,10 +201,57 @@ routes.post("/auth/login", async (req, res) => {
         sameSite: "None",
       })
       .status(200)
-      .json({ msg: "Autenticação realizada com sucesso!" });
+      .json({ msg: "Autenticação realizada com sucesso!"});
   } catch (error) {
     res.status(500).json({ msg: error });
   }
 });
+//------------------------------------------------------------------------------------
+routes.get('/auth/check-token', (req, res) => {
+  const token = req.cookies.jwt;
+  if (!token) {
+    return res.status(401).json({ msg: 'Token não fornecido' });
+  }
+  
+  try {
+    const decoded = jwt.verify(token, process.env.SECRET);
+    res.status(200).json({ msg: 'Token válido' });
+  } catch (error) {
+    res.status(401).json({ msg: 'Token inválido' });
+  }
+});
+
+const authenticateToken = (req, res, next) => {
+  const token = req.cookies.jwt;
+  if (!token) {
+    return res.status(401).json({ msg: 'Acesso negado. Token não fornecido.' });
+  }
+
+  try {
+    const decoded = jwt.verify(token, process.env.SECRET);
+    req.user = decoded;
+    next();
+  } catch (error) {
+    res.status(401).json({ msg: 'Token inválido' });
+  }
+};
+
+routes.get('/api/getUser', authenticateToken, async (req, res, next) => {
+  try {
+    const user = await User.findOne({ email: req.user.user });
+    if (!user) {
+      return res.status(404).json({ msg: 'Usuário não encontrado' });
+    }
+    res.status(200).json(user);
+  } catch (err) {
+    next(err);
+  }
+});
+
+routes.post('/auth/logout', (req, res) => {
+  res.cookie('jwt', '', { maxAge: 0, httpOnly: true, secure: true, sameSite: 'None' });
+  res.status(200).json({ msg: 'Logout realizado com sucesso!' });
+});
+
 
 module.exports = routes;

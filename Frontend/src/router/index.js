@@ -4,44 +4,72 @@ import Login from '../views/Login.vue'
 import Registro from '../views/Registro.vue'
 import VerifyEmail from '../views/VerifyEmail.vue'
 import HomeAPP from '../views/HomeAPP.vue'
+//import Profile from '../views/Profile.vue'
+//import Settings from '../views/Settings.vue'
+import axios from 'axios';
+
+const routes = [
+  {
+    path: '/',
+    name: 'home',
+    component: HomePage
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: Login
+  },
+  {
+    path: '/registrar',
+    name: 'registrar',
+    component: Registro
+  },
+  {
+    path: '/app/home',
+    name: 'homeApp',
+    component: HomeAPP,
+    meta: { requiresAuth: true }
+  },
+/*   {
+    path: '/app/profile',
+    name: 'profile',
+    component: Profile,
+    meta: { requiresAuth: true }
+  },
+  {
+    path: '/app/settings',
+    name: 'settings',
+    component: Settings,
+    meta: { requiresAuth: true }
+  }, */
+  {
+    path: '/verify-email',
+    name: 'verify-email',
+    component: VerifyEmail
+  }
+]
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
-  routes: [
-    {
-      path: '/',
-      name: 'home',
-      component: HomePage
-    },
-    {
-      path: '/login',
-      name: 'login',
-      component: Login
-    },
-    {
-      path: '/registrar',
-      name: 'registrar',
-      component: Registro
-    },
-    {
-      path: '/homeApp',
-      name: 'homeApp',
-      component: HomeAPP
-    },
-    {
-      path: '/verify-email',
-      name: 'verify-email',
-      component: VerifyEmail
-    }
-    // {
-    //   path: '/about',
-    //   name: 'about',
-    //   // route level code-splitting
-    //   // this generates a separate chunk (About.[hash].js) for this route
-    //   // which is lazy-loaded when the route is visited.
-    //   component: () => import('../views/AboutView.vue')
-    // }
-  ]
+  routes
 })
 
-export default router
+router.beforeEach(async (to, from, next) => {
+  if (to.matched.some(record => record.meta.requiresAuth)) {
+    try {
+      // Verificar se o cookie jwt existe e é válido
+      const response = await axios.get('http://localhost:3000/auth/check-token', { withCredentials: true });
+      if (response.status === 200) {
+        next();
+      } else {
+        next({ path: '/login', query: { redirect: to.fullPath } });
+      }
+    } catch (error) {
+      next({ path: '/login', query: { redirect: to.fullPath } });
+    }
+  } else {
+    next();
+  }
+});
+
+export default router;
