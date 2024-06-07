@@ -4,8 +4,11 @@ const mongoose = require('mongoose')
 const routes = require('./routes');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
+
+const host = process.env.HOST;
+
 const corsoption={
-  origin: 'http://localhost',
+  origin: `http://${host}`,
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials:true

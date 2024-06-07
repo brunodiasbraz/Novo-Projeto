@@ -132,7 +132,8 @@ routes.post("/auth/register", async (req, res) => {
       html:
         '<img src="https://ci3.googleusercontent.com/meips/ADKq_NYL2HBvmfArevX3NVujmQCPWNFsgX3e2hjNCIZn7wwvXIa1forX93ezrWp2zlocURZiHNdcmUKX7nVR1hykvEYH9z2V1PNazvd4tbOmYD4KRmNam4z_uunMuZD-cp4vJl0hboEc_C7xPxOvlJ9qU6pUjTiS2cwgesI=s0-d-e1-ft#https://mcusercontent.com/80734d74fa766a626186188dc/images/64dbc363-0c78-fb86-2e2f-a7e49b5615f1.png" alt="Imagem Externa">' +
         `<p>Olá, Por favor, clique no link abaixo para verificar seu endereço de e-mail:</p>` +
-        `<a href="https://localhost/verify-email?token=${verifyToken}">` +
+        `<a href="http://localhost/verify-email/${verifyToken}">` +
+        /* `<a href="http://localhost/verify-email/token=${verifyToken}">` + */
         `Verificar Email</a><p>Se você não solicitou esta verificação, ignore este e-mail.</p>`,
     };
 

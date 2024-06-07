@@ -1,7 +1,7 @@
 <template>
   <h1 class="mb-4 font-weight-normal text-center">Registre-se</h1>
 
-  <form @submit.prevent="submitForm" class="col-10 d-grid gap-3">
+  <form @submit.prevent="submitForm" class="d-grid gap-3">
     <div class="form-group">
       <label for="emailRegistro" class="sr-only">Seu email</label>
       <input v-model="email" type="email" id="emailRegistro" class="form-control" placeholder="Seu email" required autofocus>
@@ -15,10 +15,6 @@
       <label for="confPasswordRegistro" class="sr-only">Confirme sua senha</label>
       <input v-model="confirmPassword" type="password" id="confPasswordRegistro" class="form-control" placeholder="Confirme sua senha" required>
     </div>
-    <div class="form-group form-check">
-      <input type="checkbox" class="form-check-input" id="exampleCheck1">
-      <label class="form-check-label" for="exampleCheck1">Clique em mim</label>
-    </div>
     <BtnRoxo class="col-12 mt-3" id="btnLogin" text="Registrar" @click="submitForm" />
   </form>
 
@@ -31,7 +27,7 @@
   </div>
   <!----------Fim Alertas----------->
   <hr class="mt-4">
-  <p class="text-center px-5">Já possui cadastro? <a href="/login">Clique aqui</a> para fazer o login.</p>
+  <p class="text-center">Já possui cadastro?<br> <a href="/login">Clique aqui</a> para fazer o login.</p>
 </template>
 
 <script setup>
@@ -43,10 +39,10 @@ const email = ref('');
 const password = ref('');
 const confirmPassword = ref('');
 const name = ref('');
+const apiUrl = import.meta.env.VITE_API_URL;
 
 const submitForm = async () => {
   //console.log('Entrei no submitForm'); 
-
   try {
     // Validar se os campos estão preenchidos
     if (!email.value || !password.value || !confirmPassword.value) {
@@ -59,8 +55,7 @@ const submitForm = async () => {
       console.error('As senhas não coincidem.');
       return;
     }
-
-    const response = await axios.post('http://localhost:3000/auth/register', {
+    const response = await axios.post(`http://${apiUrl}/auth/register`, {
       name: name.value,
       email: email.value,
       password: password.value,

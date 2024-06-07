@@ -1,16 +1,19 @@
 <template>
-  <div>
-    <form class="form-signin" @submit.prevent="submitForm">
-      <h1 class="font-weight-normal text-center">Entrar</h1>
-
-      <div class="row p-3 g-3">
+    <h1 class="mb-4 font-weight-normal text-center">Entrar</h1>
+    
+    <form class="form-signin d-grid gap-3" @submit.prevent="submitForm">
+      <div class="form-group">
         <label for="emailLogin" class="sr-only">Seu email</label>
         <input v-model="email" type="email" id="emailLogin" class="form-control" placeholder="Seu email" required
           autofocus>
+      </div>
+      <div class="form-group">
         <label for="passwordLogin" class="sr-only">Sua senha</label>
         <input v-model="password" type="password" id="passwordLogin" class="form-control" placeholder="Sua senha"
           required>
-        <div class="checkbox mb-3">
+      </div>
+      <div class="form-group">
+        <div class="checkbox">
           <label>
             <input type="checkbox" value="remember-me"> Lembre-me
           </label>
@@ -23,10 +26,9 @@
             src="@/assets/google.svg" class="mx-1 p-md-1 imgGoogle" alt="logo google" style="width: 23px;"> Google</a>
       </div>
       <hr class="my-4">
-      <p>Ainda não é cadastrado? <a href="/registrar">Clique aqui</a> e registre-se agora!</p>
+      <p class="text-center">Ainda não é cadastrado? <br><a href="/registrar">Clique aqui</a> e registre-se agora!</p>
 
     </form>
-  </div>
 </template>
 
 <script setup>
@@ -38,11 +40,12 @@ import BtnRoxo from '@elements/BtnRoxo.vue';
 const email = ref('');
 const password = ref('');
 const router = useRouter();
+const apiUrl = import.meta.env.VITE_API_URL;
 
 const submitForm = async () => {
   try {
 
-    const response = await axios.post('http://localhost:3000/auth/login', {
+    const response = await axios.post(`http://${apiUrl}/auth/login`, {
       email: email.value,
       password: password.value,
 
@@ -51,9 +54,10 @@ const submitForm = async () => {
     },);
 
     console.log('Resposta do backend:', response.data);
+    console.log('Token:', response.data.token);
 
     if (response.status === 200) {
-      localStorage.setItem('token', response.data.token);
+      /* localStorage.setItem('token', response.data.token); */
       router.push('/app/home');
     }
   } catch (error) {

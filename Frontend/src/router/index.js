@@ -2,10 +2,10 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomePage from '../views/HomePage.vue'
 import Login from '../views/Login.vue'
 import Registro from '../views/Registro.vue'
+import CompRegistro from '../views/CompRegistro.vue'
 import VerifyEmail from '../views/VerifyEmail.vue'
 import HomeAPP from '../views/app/Home.vue'
 import Profile from '../views/app/User.vue'
-//import Settings from '../views/Settings.vue'
 import axios from 'axios';
 
 const routes = [
@@ -36,14 +36,13 @@ const routes = [
     component: Profile,
     meta: { requiresAuth: true }
   },
-  /* {
-    path: '/app/settings',
-    name: 'settings',
-    component: Settings,
-    meta: { requiresAuth: true }
-  },  */
   {
-    path: '/verify-email',
+    path: '/compregistro',
+    name: 'compregistro',
+    component: CompRegistro,
+  },
+  {
+    path: '/verify-email/:token',
     name: 'verify-email',
     component: VerifyEmail
   }

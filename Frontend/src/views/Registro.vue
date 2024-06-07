@@ -1,7 +1,7 @@
 <template>
   <NavBar />
-  <div class="bg-bege">
-    <div class="col-md-4 d-flex row justify-content-center py-4 bg-white shadow rounded-4">
+  <div class="container-fluid p-4 bg-bege">
+    <div class="col-md-4 bg-white mb-4 p-4 py-5 shadow rounded-4">
       <FormRegistro />
     </div>
   </div>
