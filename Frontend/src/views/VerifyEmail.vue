@@ -1,8 +1,8 @@
 <template>
-    <div class="pt-5 text-center bg-bege">
-        <h1 class="col-12">Verificando Email...</h1>
-        <div class="col-12 mx-4 loader"></div>
-    </div>
+  <div class="pt-5 text-center bg-bege">
+    <h1 class="col-12">Verificando Email...</h1>
+    <div class="col-12 mx-4 loader"></div>
+  </div>
 </template>
 
 <script>
@@ -14,6 +14,7 @@ export default {
     const router = useRouter()
     const route = useRoute()
     const token = ref(route.params.token)
+    const apiUrl = import.meta.env.VITE_API_URL;
 
     //console.log('Token recebido:', token.value);
 
@@ -21,7 +22,7 @@ export default {
       try {
         console.log('Enviando token para verificação:', token.value)
 
-        const response = await fetch('http://localhost:3000/auth/verify', {
+        const response = await fetch(`http://${apiUrl}/auth/verify`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'

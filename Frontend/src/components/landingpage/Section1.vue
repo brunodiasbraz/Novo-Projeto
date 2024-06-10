@@ -14,7 +14,7 @@ import BtnRoxo from '@elements/BtnRoxo.vue'
           <p class="col-sm mb-4 mt-3 text-secondary">
             Conheça as vantagens de entrar para o melhor Clube Fidelidade do país.
           </p>
-          <BtnRoxo text="Experimente grátis" href="/registrar" class="text-uppercase" />
+          <BtnRoxo text="Experimente" href="/registrar" class="text-uppercase px-4" />
         </div>
       </div>
     </div>

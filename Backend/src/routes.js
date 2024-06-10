@@ -11,7 +11,8 @@ const User = require("./models/User");
 function checkToken(req, res, next) {
   const token = req.cookie.jwt || null;
 
-  if (typeof (token) == undefined || !token || token == '') return res.status(401).json({ msg: "Acesso negado!" });
+  if (typeof token == undefined || !token || token == "")
+    return res.status(401).json({ msg: "Acesso negado!" });
 
   try {
     const secret = process.env.SECRET;
@@ -92,7 +93,9 @@ routes.post("/auth/register", async (req, res) => {
   }
 
   if (password != confirmpassword) {
-    return res.status(422).json({ msg: "A senha e a confirmação precisam ser iguais!" });
+    return res
+      .status(422)
+      .json({ msg: "A senha e a confirmação precisam ser iguais!" });
   }
 
   // check if user exists
@@ -107,6 +110,7 @@ routes.post("/auth/register", async (req, res) => {
   const passwordHash = await bcrypt.hash(password, salt);
   const sendEmail = process.env.EMAIL;
   const emailPassword = process.env.EMAIL_PASSWORD;
+  const apiUrl = process.env.HOST;
   // create user
   const user = new User({
     name,
@@ -132,7 +136,7 @@ routes.post("/auth/register", async (req, res) => {
       html:
         '<img src="https://ci3.googleusercontent.com/meips/ADKq_NYL2HBvmfArevX3NVujmQCPWNFsgX3e2hjNCIZn7wwvXIa1forX93ezrWp2zlocURZiHNdcmUKX7nVR1hykvEYH9z2V1PNazvd4tbOmYD4KRmNam4z_uunMuZD-cp4vJl0hboEc_C7xPxOvlJ9qU6pUjTiS2cwgesI=s0-d-e1-ft#https://mcusercontent.com/80734d74fa766a626186188dc/images/64dbc363-0c78-fb86-2e2f-a7e49b5615f1.png" alt="Imagem Externa">' +
         `<p>Olá, Por favor, clique no link abaixo para verificar seu endereço de e-mail:</p>` +
-        `<a href="http://localhost/verify-email/${verifyToken}">` +
+        `<a href="http://${apiUrl}/verify-email/${verifyToken}">` +
         /* `<a href="http://localhost/verify-email/token=${verifyToken}">` + */
         `Verificar Email</a><p>Se você não solicitou esta verificação, ignore este e-mail.</p>`,
     };
@@ -167,7 +171,7 @@ routes.post("/auth/login", async (req, res) => {
   if (!password) {
     return res.status(422).json({ msg: "A senha é obrigatória!" });
   }
- 
+
   // check if user exists
   const user = await User.findOne({ email: email });
   if (!user) {
@@ -202,30 +206,30 @@ routes.post("/auth/login", async (req, res) => {
         sameSite: "None",
       })
       .status(200)
-      .json({ msg: "Autenticação realizada com sucesso!"});
+      .json({ msg: "Autenticação realizada com sucesso!" });
   } catch (error) {
     res.status(500).json({ msg: error });
   }
 });
 //------------------------------------------------------------------------------------
-routes.get('/auth/check-token', (req, res) => {
+routes.get("/auth/check-token", (req, res) => {
   const token = req.cookies.jwt;
   if (!token) {
-    return res.status(401).json({ msg: 'Token não fornecido' });
+    return res.status(401).json({ msg: "Token não fornecido" });
   }
-  
+
   try {
     const decoded = jwt.verify(token, process.env.SECRET);
-    res.status(200).json({ msg: 'Token válido' });
+    res.status(200).json({ msg: "Token válido" });
   } catch (error) {
-    res.status(401).json({ msg: 'Token inválido' });
+    res.status(401).json({ msg: "Token inválido" });
   }
 });
 
 const authenticateToken = (req, res, next) => {
   const token = req.cookies.jwt;
   if (!token) {
-    return res.status(401).json({ msg: 'Acesso negado. Token não fornecido.' });
+    return res.status(401).json({ msg: "Acesso negado. Token não fornecido." });
   }
 
   try {
@@ -233,15 +237,15 @@ const authenticateToken = (req, res, next) => {
     req.user = decoded;
     next();
   } catch (error) {
-    res.status(401).json({ msg: 'Token inválido' });
+    res.status(401).json({ msg: "Token inválido" });
   }
 };
 
-routes.get('/api/getUser', authenticateToken, async (req, res, next) => {
+routes.get("/api/getUser", authenticateToken, async (req, res, next) => {
   try {
     const user = await User.findOne({ email: req.user.user });
     if (!user) {
-      return res.status(404).json({ msg: 'Usuário não encontrado' });
+      return res.status(404).json({ msg: "Usuário não encontrado" });
     }
     res.status(200).json(user);
   } catch (err) {
@@ -249,10 +253,14 @@ routes.get('/api/getUser', authenticateToken, async (req, res, next) => {
   }
 });
 
-routes.post('/auth/logout', (req, res) => {
-  res.cookie('jwt', '', { maxAge: 0, httpOnly: true, secure: true, sameSite: 'None' });
-  res.status(200).json({ msg: 'Logout realizado com sucesso!' });
+routes.post("/auth/logout", (req, res) => {
+  res.cookie("jwt", "", {
+    maxAge: 0,
+    httpOnly: true,
+    secure: true,
+    sameSite: "None",
+  });
+  res.status(200).json({ msg: "Logout realizado com sucesso!" });
 });
-
 
 module.exports = routes;
