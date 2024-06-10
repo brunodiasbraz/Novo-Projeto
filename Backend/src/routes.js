@@ -179,13 +179,13 @@ routes.post("/auth/login", async (req, res) => {
   }
 
   // check if password match
-  const checkPassword = bcrypt.compare(password, user.passwordHash);
-
+  const checkPassword = await bcrypt.compare(password, user.passwordHash);
+ 
   if (!checkPassword) {
-    return res.status(422).json({ msg: "Senha inválida" });
-  }
+    return res.status(401).json({ msg: "Senha inválida" });
+    }
 
-  try {
+    try {
     const secret = process.env.SECRET;
     const expiresIn = "7d";
     const token = jwt.sign(
@@ -206,26 +206,12 @@ routes.post("/auth/login", async (req, res) => {
         sameSite: "None",
       })
       .status(200)
-      .json({ msg: "Autenticação realizada com sucesso!" });
+      .json({ msg: "Autenticação realizada com sucesso!", id_user: user._id });
   } catch (error) {
-    res.status(500).json({ msg: error });
+    res.status(500).json({ msg: "Erro interno do servidor", error: error.message });
   }
 });
 //------------------------------------------------------------------------------------
-routes.get("/auth/check-token", (req, res) => {
-  const token = req.cookies.jwt;
-  if (!token) {
-    return res.status(401).json({ msg: "Token não fornecido" });
-  }
-
-  try {
-    const decoded = jwt.verify(token, process.env.SECRET);
-    res.status(200).json({ msg: "Token válido" });
-  } catch (error) {
-    res.status(401).json({ msg: "Token inválido" });
-  }
-});
-
 const authenticateToken = (req, res, next) => {
   const token = req.cookies.jwt;
   if (!token) {

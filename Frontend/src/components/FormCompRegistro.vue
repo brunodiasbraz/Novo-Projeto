@@ -4,9 +4,9 @@
     style="height: 5px" aria-valuemax="100">
     <div class="progress-bar bg-warning" id="progress-bar" :style="{ width: progressBarWidth }"></div>
   </div>
-  <form @submit.prevent="submitForm" class="d-grid gap-3">
+  <form @submit.prevent="submitForm" class="d-grid gap-3 needs-validation" novalidate>
     <div class="form-group">
-      <label for="nome" class="">Nome completo</label>
+      <label for="nomeRegistro" class="form-label">Nome completo</label>
       <input v-model="nome" type="text" id="nomeRegistro" class="form-control mb-3" placeholder="Ex.: Jhon Doe" required
         autofocus @input="updateProgressBar" />
 
@@ -14,9 +14,12 @@
       <input v-model="telefone" type="number" id="telefoneRegistro" class="form-control mb-3"
         placeholder="Ex.: 11122233366" required autofocus @input="updateProgressBar" />
 
-      <label for="cpf" class="">CPF</label>
-      <input v-model="cpf" type="number" id="cpfRegistro" class="form-control mb-3" placeholder="Ex.: 11122233366"
-        required autofocus @input="updateProgressBar" />
+        <label for="cpf" class="">CPF</label>
+      <input v-model="cpf" :class="cpfClass" @blur="validateCpf" type="text" id="cpfRegistro" class="form-control mb-3" placeholder="Ex.: 11122233366" required autofocus @input="updateProgressBar" />
+      <div v-if="cpf && !isCpfValid" class="invalid-feedback">
+        CPF inválido.
+      </div>
+
 
       <label for="dataNascimento" class="">Data de Nascimento</label>
       <input v-model="dataNascimento" type="date" id="dataNascimentoRegistro" class="form-control mb-3" required
@@ -39,8 +42,8 @@
       </div>
     </div>
 
-    <BtnRoxo class="col-12 mt-2" id="btnCCliente" text="Continuar" @click="submitForm" />
-    <button class="col-12 btn rounded-5 shadow bg-warning" id="btnCParceiro" @click="submitForm">Quero
+    <button class="col-12 btn rounded-5 text-white c-roxo shadow" id="btnCCliente" @click="submitForm">Continuar</button>
+    <button class="col-12 btn rounded-5 shadow bg-warning" type="submit" id="btnCParceiro" @click="submitForm">Quero
       ser Parceiro</button>
 
     <!-- Button trigger modal -->
@@ -86,8 +89,8 @@
 </template>
 
 <script setup>
-import { ref, watchEffect } from 'vue'
-import BtnRoxo from '@elements/BtnRoxo.vue'
+import { ref, computed, watchEffect, onMounted } from 'vue';
+import { cpf as cpfValidator } from 'cpf-cnpj-validator';
 
 const nome = ref('');
 const telefone = ref('');
@@ -96,6 +99,25 @@ const dataNascimento = ref('');
 const cepRegistro = ref('');
 const response = ref(null);
 const progressBarWidth = ref('50%');
+const isCpfValid = ref(true);
+const hasValidatedCpf = ref(false);
+
+const validateCpf = () => {
+  hasValidatedCpf.value = true;
+  if (cpf.value.trim() !== '') {
+    isCpfValid.value = cpfValidator.isValid(cpf.value);
+    if (isCpfValid.value) {
+      cpf.value = cpfValidator.format(cpf.value);
+    }
+  }
+};
+
+const cpfClass = computed(() => {
+  if (!hasValidatedCpf.value) {
+    return '';
+  }
+  return isCpfValid.value ? 'is-valid' : 'is-invalid';
+});
 
 const getCep = async () => {
   const url = `https://viacep.com.br/ws/${cepRegistro.value}/json/`;
@@ -104,7 +126,6 @@ const getCep = async () => {
     const data = await resp.json();
     if (!data.erro) {
       const keysToShow = ['logradouro', 'numero', 'complemento', 'bairro', 'localidade', 'uf'];
-
       const orderedData = keysToShow.reduce((obj, key) => {
         if (key === 'numero') {
           obj[key] = '';
@@ -115,7 +136,6 @@ const getCep = async () => {
         }
         return obj;
       }, {});
-
       response.value = orderedData;
     } else {
       alert('Cep não encontrado');
@@ -137,12 +157,9 @@ const submitForm = async () => {
       cep: cepRegistro.value,
       ...response.value,
     };
-
     console.log('Dados do formulário:', formData);
-
     // Substitua a URL abaixo pela URL correta para enviar o formulário
     // const response = await axios.post('http://sua-api-url.com/registro', formData);
-
     /* if (response.status === 201) {
       document.getElementById('alertSuccess').classList.remove('d-none');
       setTimeout(() => {
@@ -170,7 +187,6 @@ const updateProgressBar = () => {
   if (cpf.value !== '') filledInputs++;
   if (dataNascimento.value !== '') filledInputs++;
   if (cepRegistro.value !== '') filledInputs++;
-
   const progressPercentage = 50 + (filledInputs * 9);
   progressBarWidth.value = `${progressPercentage}%`;
 };
@@ -179,7 +195,21 @@ const updateProgressBar = () => {
 watchEffect(() => {
   updateProgressBar();
 });
+
+onMounted(() => {
+  const forms = document.querySelectorAll('.needs-validation');
+  Array.from(forms).forEach(form => {
+    form.addEventListener('submit', event => {
+      if (!form.checkValidity()) {
+        event.preventDefault();
+        event.stopPropagation();
+      }
+      form.classList.add('was-validated');
+    }, false);
+  });
+});
 </script>
+
 <style scoped>
 a {
   text-decoration: none;
@@ -188,5 +218,9 @@ a {
 #btnCParceiro {
   color: #5B438B;
   background-color: #5B438B;
+}
+.invalid-feedback{
+  margin-top: -12px;
+  margin-bottom: 10px;
 }
 </style>

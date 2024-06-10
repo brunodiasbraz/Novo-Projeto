@@ -34,7 +34,7 @@
       const getUserData = async () => {
         try {
           const response = await axios.get('http://localhost:3000/api/getUser', { withCredentials: true });
-          console.log('Dados do usuário:', response.data);
+          //console.log('Dados do usuário:', response.data);
           userData.value = response.data;
         } catch (error) {
           console.error('Erro ao obter dados do usuário:', error);

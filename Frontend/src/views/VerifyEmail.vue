@@ -64,6 +64,7 @@ div {
 
 .bg-bege {
   background: #fbf7ec;
+  height: 100vh;
 }
 
 .loader {

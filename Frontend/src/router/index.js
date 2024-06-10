@@ -28,13 +28,11 @@ const routes = [
     path: '/app/home',
     name: 'homeApp',
     component: HomeAPP,
-    meta: { requiresAuth: true }
   },
   {
     path: '/app/profile',
     name: 'profile',
     component: Profile,
-    meta: { requiresAuth: true }
   },
   {
     path: '/compregistro',
@@ -59,9 +57,8 @@ router.beforeEach(async (to, from, next) => {
       // Verificar se o cookie jwt existe e é válido
       const response = await axios.get('http://localhost:3000/auth/check-token', { withCredentials: true });
       if (response.status === 200) {
-        next();
       } else {
-        next({ path: '/login', query: { redirect: to.fullPath } });
+        next({ path: '/registrar', query: { redirect: to.fullPath } });
       }
     } catch (error) {
       next({ path: '/login', query: { redirect: to.fullPath } });

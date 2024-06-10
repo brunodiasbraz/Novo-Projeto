@@ -1,5 +1,5 @@
 <template>
-  <h1 class="mb-4 font-weight-normal text-center">Registre-se</h1>
+  <h1 class="mb-4 mt-2 font-weight-normal text-center">Registre-se</h1>
 
   <form @submit.prevent="submitForm" class="d-grid gap-3">
     <div class="form-group">
