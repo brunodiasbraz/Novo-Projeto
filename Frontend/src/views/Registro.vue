@@ -1,9 +1,14 @@
 <template>
   <NavBar />
   <div class="container-fluid p-4 bg-bege">
-    <div class="row justify-content-center"> <!-- Centralizar o conteúdo -->
-      <div class="col-sm-12 col-md-4 bg-white mb-4 p-4 py-4 shadow rounded-4">
-        <FormRegistro />
+    <div class="row justify-content-center">
+      <div class="col-sm-12 col-md-6 bg-white mb-4 p-0 shadow rounded-4 d-flex">
+        <div class="col-12 col-md-6 p-4 p-md-5">
+          <FormRegistro />
+        </div>
+        <div class="d-none d-md-block col-md-6 p-0">
+          <img src="@assets/Frame 4.svg" alt="Description" class="img-fluid rounded-4 h-100 w-100" style="object-fit: cover;">
+        </div>
       </div>
     </div>
   </div>
