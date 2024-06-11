@@ -1,13 +1,25 @@
 <template>
-  <div class="bg-bege">
-    <div class="col-md-4 d-flex row justify-content-center py-4 bg-white shadow rounded-4">
-      <FormRegistro />
+  <NavBar />
+  <div class="container-fluid p-4 bg-bege">
+    <div class="row justify-content-center">
+      <div class="col-sm-12 col-md-6 bg-white mb-4 p-0 shadow rounded-4 d-flex">
+        <div class="col-12 col-md-6 p-4 p-md-5">
+          <FormRegistro />
+        </div>
+        <div class="d-none d-md-block col-md-6 p-0">
+          <img src="@assets/Frame 4.svg" alt="Description" class="img-fluid rounded-4 h-100 w-100" style="object-fit: cover;">
+        </div>
+      </div>
     </div>
   </div>
+  <LFooter />
 </template>
 
 <script setup>
+import NavBar from '@components/NavBar.vue'
 import FormRegistro from "../components/FormRegistro.vue"
+import LFooter from '@components/Footer.vue'
+
 </script>
 
 <style scoped>

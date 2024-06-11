@@ -14,7 +14,12 @@ import BtnRoxo from '@elements/BtnRoxo.vue'
           <p class="col-sm mb-4 mt-3 text-secondary">
             Conheça as vantagens de entrar para o melhor Clube Fidelidade do país.
           </p>
-          <BtnRoxo text="Experimente grátis" href="/registrar" class="text-uppercase" />
+          <!-- <BtnRoxo text="Experimente" href="/registrar" class="text-uppercase px-4" /> -->
+          
+          <div>
+            <a href="/registrar" class="btn btn--promo px-5 c-roxo text-uppercase">Experimente</a>
+          </div>
+
         </div>
       </div>
     </div>
@@ -29,10 +34,29 @@ export default {
 </script>
 
 <style scoped>
+.btn--promo {
+  color: #ffffff;
+  background-color: #130f40;
+  border-radius: 50px;
+}
+
+.btn--promo:after {
+  content: 'é grátis!';
+  display: inline-block;
+  font-size: 0.75rem;
+  color: #000000;
+  background-color: #FFDE59;
+  border-radius: 25px;
+  padding: 2px 18px;
+  position: absolute;
+  margin-top: 25px; 
+  margin-left: -55px; 
+  transform: rotate(-3deg);
+}
+
 .bg-bege {
   background: #FBF7EC;
   padding: 5% 0;
-
 }
 
 .c-roxo {

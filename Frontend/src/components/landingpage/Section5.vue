@@ -8,7 +8,7 @@ import BtnRoxo from '@elements/BtnRoxo.vue'
         <h3 class="c-roxo-text">Junte-se a nós hoje e comece a <strong>Ganhar</strong></h3>
       </div>
       <div class="p-3">
-        <img src="@assets/pic2.svg" alt="Imagem da seção 3" style="width: 85%;">
+        <img src="@assets/pic2.svg" alt="Imagem da seção 3">
       </div>
       <p class="c-roxo-text py-3">É grátis e fácil de se inscrever.<br />
         Clique no botão abaixo para começar a ganhar pontos e recompensas.</p>
@@ -38,5 +38,14 @@ export default {
 
 .bg-bege {
   background: #FBF7EC;
+}
+
+img {
+  width: 95%;
+  /* Tamanho normal para dispositivos móveis */
+
+  @media (min-width: 768px) {
+    width: 50%;
+  }
 }
 </style>
