@@ -43,7 +43,7 @@ routes.get("/user/:id", checkToken, async (req, res) => {
 
 // Open Route
 routes.get("/", (req, res) => {
-  res.status(200).json({ msg: "Bem vindo a API!!!!!!!" });
+  res.status(200).json({ msg: "Bem vindo a API!!!!!!!####@" });
 });
 
 routes.post("/auth/verify", async (req, res) => {
