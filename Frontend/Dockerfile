@@ -1,12 +1,14 @@
-FROM node:16
+FROM node:lts-alpine
 
 WORKDIR /usr/app
 
 COPY package*.json ./
 
-RUN rm -f package-lock.json && rm -rf node_modules && npm install --force 
+RUN npm install -g @vue/cli
 
-RUN npm cache clean --force 
+RUN npm install  vite --save-dev 
+
+RUN chmod -R 755 /usr/app
 
 COPY . .
 
