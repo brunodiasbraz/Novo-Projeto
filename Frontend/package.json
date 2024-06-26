@@ -7,7 +7,8 @@
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist",
-    "dev": "vite --host 0.0.0.0",
+    "dev": "concurrently \"npm start --prefix ../whatsapp-api\" \"npm run start:frontend\"",
+    "start:frontend": "vite --host 0.0.0.0",
     "build": "vite build",
     "preview": "vite preview",
     "test:unit": "vitest",
@@ -30,6 +31,7 @@
     "@vitejs/plugin-vue": "^4.5.1",
     "@vue/eslint-config-prettier": "^8.0.0",
     "@vue/test-utils": "^2.4.3",
+    "concurrently": "^8.2.2",
     "eslint": "^8.49.0",
     "eslint-plugin-vue": "^9.17.0",
     "gh-pages": "^6.1.1",

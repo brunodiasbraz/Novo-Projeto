@@ -6,7 +6,8 @@ import CompRegistro from '../views/CompRegistro.vue'
 import VerifyEmail from '../views/VerifyEmail.vue'
 import HomeAPP from '../views/app/Home.vue'
 import Profile from '../views/app/User.vue'
-import axios from 'axios';
+import LiveChat from '@components/LiveChat.vue'
+import axios from 'axios'
 
 const routes = [
   {
@@ -27,17 +28,17 @@ const routes = [
   {
     path: '/app/home',
     name: 'homeApp',
-    component: HomeAPP,
+    component: HomeAPP
   },
   {
     path: '/app/profile',
     name: 'profile',
-    component: Profile,
+    component: Profile
   },
   {
     path: '/compregistro',
     name: 'compregistro',
-    component: CompRegistro,
+    component: CompRegistro
   },
   {
     path: '/verify-email/:token',
@@ -52,20 +53,22 @@ const router = createRouter({
 })
 
 router.beforeEach(async (to, from, next) => {
-  if (to.matched.some(record => record.meta.requiresAuth)) {
+  if (to.matched.some((record) => record.meta.requiresAuth)) {
     try {
       // Verificar se o cookie jwt existe e é válido
-      const response = await axios.get('http://localhost:3000/auth/check-token', { withCredentials: true });
+      const response = await axios.get('http://localhost:3000/auth/check-token', {
+        withCredentials: true
+      })
       if (response.status === 200) {
       } else {
-        next({ path: '/registrar', query: { redirect: to.fullPath } });
+        next({ path: '/registrar', query: { redirect: to.fullPath } })
       }
     } catch (error) {
-      next({ path: '/login', query: { redirect: to.fullPath } });
+      next({ path: '/login', query: { redirect: to.fullPath } })
     }
   } else {
-    next();
+    next()
   }
-});
+})
 
-export default router;
+export default router

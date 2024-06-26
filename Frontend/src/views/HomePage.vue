@@ -1,4 +1,3 @@
-
 <script setup>
 import NavBar from '@components/NavBar.vue'
 import Section1 from '@components/landingpage/Section1.vue'
@@ -9,6 +8,7 @@ import Section5 from '@components/landingpage/Section5.vue'
 import Section6 from '@components/landingpage/Section6.vue'
 import Section7 from '@components/landingpage/Section7.vue'
 import LFooter from '@components/Footer.vue'
+import LiveChat from '@components/LiveChat.vue'
 </script>
 <template>
   <NavBar />
@@ -20,10 +20,14 @@ import LFooter from '@components/Footer.vue'
   <Section6 />
   <Section7 />
   <LFooter />
+  <LiveChat />
 </template>
 
 <script>
 export default {
+  components: {
+    LiveChat
+  },
   name: 'HomePage',
 }
 </script>

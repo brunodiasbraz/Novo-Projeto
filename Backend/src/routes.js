@@ -180,12 +180,12 @@ routes.post("/auth/login", async (req, res) => {
 
   // check if password match
   const checkPassword = await bcrypt.compare(password, user.passwordHash);
- 
+
   if (!checkPassword) {
     return res.status(401).json({ msg: "Senha inválida" });
-    }
+  }
 
-    try {
+  try {
     const secret = process.env.SECRET;
     const expiresIn = "7d";
     const token = jwt.sign(
@@ -208,7 +208,9 @@ routes.post("/auth/login", async (req, res) => {
       .status(200)
       .json({ msg: "Autenticação realizada com sucesso!", id_user: user._id });
   } catch (error) {
-    res.status(500).json({ msg: "Erro interno do servidor", error: error.message });
+    res
+      .status(500)
+      .json({ msg: "Erro interno do servidor", error: error.message });
   }
 });
 //------------------------------------------------------------------------------------
