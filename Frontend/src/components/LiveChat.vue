@@ -1,7 +1,7 @@
 <template>
     <div>
-        <button type="button" class="btn btn-primary rounded-5 shadow fixed-bottom-right" id="btnChat"
-            data-bs-toggle="modal" data-bs-target="#liveChatModal">
+        <button type="button" class="btn btn-warning shadow px-4 fixed-bottom-right" id="btnChat" data-bs-toggle="modal"
+            data-bs-target="#liveChatModal">
             💬 Converse conosco
         </button>
 
@@ -189,5 +189,11 @@ button:hover {
 .response-message {
     text-align: left;
     background-color: rgb(153, 153, 153);
+}
+
+#btnChat {
+    color: #000000;
+    border-radius: 10px 25px 0 25px;
+    background-color: #FFDE59;
 }
 </style>
