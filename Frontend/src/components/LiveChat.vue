@@ -48,7 +48,6 @@ import axios from 'axios';
 export default {
     data() {
         return {
-            apiKey: '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',
             message: '',
             status: '',
             history: [],
