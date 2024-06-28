@@ -67,7 +67,7 @@ export default {
 
             try {
                 const response = await axios.post("http://192.168.1.128:3001/client/sendMessage/clubao", {
-                    chatId: "553288399180@c.us",
+                    chatId: "553291994022@c.us",
                     contentType: "string",
                     content: this.message,
                 }, {
@@ -100,9 +100,9 @@ export default {
             if (userMessage) {
                 this.history.push({ type: 'user', text: userMessage });
             }
-            if (botResponse) {
-                this.history.push({ type: 'bot', text: botResponse });
-            }
+            // if (botResponse) {
+            //     this.history.push({ type: 'bot', text: botResponse });
+            // }
 
             this.$nextTick(() => {
                 let historyBox = document.getElementById('history');

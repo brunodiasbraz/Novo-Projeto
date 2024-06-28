@@ -7,7 +7,7 @@
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist",
-    "dev": "concurrently \"npm start --prefix ../whatsapp-api\" \"npm run start:frontend\"",
+    "dev": "concurrently -n \"WPP-API,FRONTEND\" -c \"green,blue\" \"npm start --prefix ../whatsapp-api\" \"npm run start:frontend\"",
     "start:frontend": "vite --host 0.0.0.0",
     "build": "vite build",
     "preview": "vite preview",
