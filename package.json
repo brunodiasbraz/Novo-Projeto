@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "name": "whatsapp-web-api",
   "version": "1.0.0",
   "description": "REST API wrapper for whatsapp-web.js",
@@ -53,4 +54,9 @@
   },
   "homepage": "https://github.com/chrishubert/whatsapp-web-api",
   "private": true
+=======
+  "dependencies": {
+    "openai": "^4.0.0"
+  }
+>>>>>>> 87ff07635a935a02b547b1a1e64fc62c58052b8e
 }
