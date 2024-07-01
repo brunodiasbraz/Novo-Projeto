@@ -52,7 +52,13 @@ export default {
             status: '',
             history: [],
             isSending: false,
+            sessionId: 'clubao', // Coloque aqui o sessionId correto
+            chatId: '553291994022@c.us' // Coloque aqui o chatId correto
         };
+    },
+    mounted() {
+        this.fetchMessages();
+        //setInterval(this.fetchMessages, 5000); // Checa novas mensagens a cada 5 segundos
     },
     methods: {
         async sendMessage() {
@@ -66,8 +72,8 @@ export default {
             this.showHistory(this.message, null);
 
             try {
-                const response = await axios.post("http://192.168.1.128:3001/client/sendMessage/clubao", {
-                    chatId: "553291994022@c.us",
+                const response = await axios.post(`http://192.168.1.128:3001/client/sendMessage/clubao`, {
+                    chatId: this.chatId,
                     contentType: "string",
                     content: this.message,
                 }, {
@@ -100,19 +106,43 @@ export default {
             if (userMessage) {
                 this.history.push({ type: 'user', text: userMessage });
             }
-            // if (botResponse) {
-            //     this.history.push({ type: 'bot', text: botResponse });
-            // }
+            if (botResponse) {
+                this.history.push({ type: 'bot', text: botResponse });
+            }
 
             this.$nextTick(() => {
                 let historyBox = document.getElementById('history');
                 historyBox.scrollTop = historyBox.scrollHeight;
             });
+        },
+        async fetchMessages() {
+            try {
+                const response = await axios.post(`http://192.168.1.128:3001/chat/fetchMessages/${this.sessionId}`, {
+                    chatId: this.chatId,
+                    searchOptions: {}
+                }, {
+                    headers: {
+                        Accept: "application/json",
+                        "x-api-key": "clubao",
+                        "Content-Type": "application/json",
+                    }
+                });
+
+                const data = response.data;
+
+                if (data.messages && data.messages.length) {
+                    data.messages.forEach(message => {
+                        if (message.from !== this.chatId) { // Supondo que as mensagens recebidas têm `from` diferente do `chatId`
+                            this.showHistory(null, message.body);
+                        }
+                    });
+                }
+            } catch (e) {
+                console.log(`Error fetching messages -> ${e}`);
+            }
         }
     }
-
 };
-
 </script>
 
 <style>
