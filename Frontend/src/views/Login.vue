@@ -1,7 +1,16 @@
 <template>
-  <div class="container-fluid d-flex justify-content-center p-4 bg-bege">
-    <div class="col-md-4 bg-white mb-4 p-5 shadow rounded-4">
-      <FormLogin />
+  <NavBar />
+  <div class="container-fluid p-4 bg-bege">
+    <div class="row justify-content-center">
+      <div class="col-sm-12 col-md-6 bg-white mb-4 p-0 shadow rounded-4 d-flex">
+        <div class="d-none d-md-block col-md-6 p-0">
+          <img src="@assets/Frame.svg" alt="Description" class="img-fluid rounded-4 h-100 w-100"
+            style="object-fit: cover;">
+        </div>
+        <div class="col-12 col-md-6 p-4 p-md-5">
+          <FormLogin />
+        </div>
+      </div>
     </div>
   </div>
 </template>

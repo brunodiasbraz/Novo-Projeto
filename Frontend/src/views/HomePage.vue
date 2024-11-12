@@ -1,4 +1,3 @@
-
 <script setup>
 import Section1 from '@components/landingpage/Section1.vue'
 import Section2 from '@components/landingpage/Section2Cards.vue'

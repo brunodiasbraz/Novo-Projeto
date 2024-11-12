@@ -42,7 +42,7 @@ routes.get("/user/:id", checkToken, async (req, res) => {
 
 // Open Route
 routes.get("/", (req, res) => {
-  res.status(200).json({ msg: "Bem vindo a API!!!!!!!" });
+  res.status(200).json({ msg: "Bem vindo a API!!!!!!!####@" });
 });
 
 routes.post("/auth/verify", async (req, res) => {
@@ -203,7 +203,9 @@ routes.post("/auth/login", async (req, res) => {
       .status(200)
       .json({ msg: "Autenticação realizada com sucesso!" });
   } catch (error) {
-    res.status(500).json({ msg: error });
+    res
+      .status(500)
+      .json({ msg: "Erro interno do servidor", error: error.message });
   }
 });
 
